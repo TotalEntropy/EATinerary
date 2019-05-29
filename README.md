@@ -8,5 +8,9 @@ Although the food service industry looks promising due to increased demand, the 
 
 In order to help both consumers and businesses alike, we’ve gathered Yelp’s dataset to build an interactive dashboard page. The visualizations such as table, map and chart are customizable to meet the specific needs of foodies, non-foodies and businesses alike. User-input will make consumer and business research quick and easy. Filtering by location, cuisine, price category and other options such as wheelchair access, gender neutral washrooms etc, will prove very useful for targeting specific consumer needs and niche marketing. Afterall, no single restaurant has a universal appeal. 
 
+Below are our inspiration / planned visualizations with some notes in red font...
+
+ ![Inspiration](Images/inspiration.jpg)
+
 
 
