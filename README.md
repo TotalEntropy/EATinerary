@@ -13,4 +13,7 @@ Below are our inspiration / planned visualizations with some notes in red font..
  ![Inspiration](Images/inspiration.jpg)
 
 
-
+Will use of these JS libraries not covered in class
+o	Sweetalert2 (pop-up library) - https://sweetalert2.github.io/
+o	Popmotion -  https://popmotion.io/pure/
+o	Typed.js - https://mattboldt.com/typed.js/
