@@ -1,5 +1,5 @@
 # Import dependencies
-from flask import Flask, render_template, jsonify
+from flask import Flask, Markup, render_template, jsonify
 from flask_pymongo import PyMongo
 import json
 import os
@@ -11,18 +11,19 @@ mongo = PyMongo(app)
 
 # json data
 json_path = os.path.join('data', 'yelp_dataset', 'clean', 'restaurants.json')
+with open(json_path) as data:
+    json_data = json.load(data)
 
 # Setting up mongodb
 restaurants = mongo.db.restaurants
 
 # Loading the json data into mongodb
-with open(json_path) as json_file:
-    restaurants.update({}, json.load(json_file), upsert=True)
+restaurants.update({}, json_data, upsert=True)
 
 # Home route
 @app.route("/")
 def home():
-    return render_template("EATinerary.html", restaurants=restaurants)
+    return render_template("EATinerary.html")
 
 if __name__ == "__main__": 
     app.run(debug= True)
