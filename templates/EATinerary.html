@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0051)https://getbootstrap.com/docs/4.0/examples/product/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,15 +8,11 @@
 
     <title>EATinerary</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/product/">
-
     <!-- Bootstrap core CSS -->
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/static/css/product.css" rel="stylesheet">
-	
-	
 	
   </head>
 
@@ -35,13 +30,13 @@
 	  </nav>
 	</div>
 
-<!-- Jumbotron -->
-        <div class="jumbotron text-center" style="background-image: url(	https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v149-lp-249-foodillutration_2.jpg?auto=format&bg=F4F4F3&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-1.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1000&s=9f6eb8ccdf258d69542f9ba0aa182058
-		); background-size: 100%; height: 100%;">
-            <h2 class="my-0 font-weight-normal">
+	<!-- Jumbotron -->
+    <div class="jumbotron text-center" style="background-image: url(	https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v149-lp-249-foodillutration_2.jpg?auto=format&bg=F4F4F3&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-1.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1000&s=9f6eb8ccdf258d69542f9ba0aa182058); background-size: 100%; height: 100%;">
+		<h2 class="my-0 font-weight-normal">
 			<br>Ontario Restaurants Web Application
-			<br>for targeting specific consumer needs and niche marketing.</h2>
-        </div>
+			<br>for targeting specific consumer needs and niche marketing.
+		</h2>
+    </div>
 
 	<!-- CARDS -->
 	<div class="container">
@@ -95,5 +90,24 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="/static/css/popper.min.js.download"></script>
     <script src="/static/css/bootstrap.min.js.download"></script>
-
+	
+	<!-- Popmotion -->
+	<script src="https://unpkg.com/popmotion/dist/popmotion.global.min.js"></script>
+	
+	<script>
+	const container = popmotion.styler(document.querySelector('.container'))
+	popmotion.tween({ 
+		from: { 
+			scale: .2, 
+			opacity: 0,
+			y: -300
+		},
+		to: { 
+			scale: 1, 
+			opacity: 1,
+			y: 0
+		},
+		duration: 2000
+	}).start(container.set);
+	</script>
 </body></html>
