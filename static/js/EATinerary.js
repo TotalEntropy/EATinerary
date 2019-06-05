@@ -1,6 +1,7 @@
 // Select the form
 const cityInput = d3.select("#city");
 const starsInput = d3.select("#stars");
+const button
 
 // Select generate a map
 const generateMap = d3.select("#btn btn-default btn-lg btn-block");
