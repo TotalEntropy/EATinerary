@@ -33,81 +33,94 @@
 	<!-- Jumbotron -->
     <div class="jumbotron text-center" style="background-image: url(	https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v149-lp-249-foodillutration_2.jpg?auto=format&bg=F4F4F3&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-1.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1000&s=9f6eb8ccdf258d69542f9ba0aa182058); background-size: 100%; height: 100%;">
 		<h2 class="my-0 font-weight-normal">
-			<br>Ontario Restaurants Web Application
-			<br>for targeting specific consumer needs and niche marketing.
+			<br>Greater Toronto Area Restaurants
+			<br>Web Application
 		</h2>
     </div>
 
 	<!-- CARDS -->
-	<div class="container">
-		<div class="row">
-				<aside class="filters">
+	<div class="container">		
+	  <div class="row">
+		<!-- CARD 1 -->
+		<div class="col-md-6">
+		  <div class="card-deck mb-3 text-left">
+			<div class="card mb-4 shadow-sm">
+			  <div class="card-header">
+				<h2 class="my-0 font-weight-normal">Get Started!</h2>
+			  </div>
+			  <div class="card-body">
+			  <!-- FORM 1 -->
+			<aside class="filters">
             <div class="panel panel-default">
               <div class="panel-heading">Form to generate a map</div>
               <div class="panel-body">
                 <form action="/map.html" roles="form" name="generateMap">
                   <div class="form-group">
-                    <!--Code to filter by city-->
+                    <!--Code to filter by city-->					
                     <ul class="list-group" id="filters">
                       <li class="filter list-group-item">      
                         <input class="form-control" id="city" name="city" type="text" placeholder="Enter a city">
                       </li>
                     </ul>
-                    <!--Code to filter by city-->
+                    <!--Code to filter by stars-->
                     <ul class="list-group" id="filters">
                       <li class="filter list-group-item">      
-                        <input class="form-control" id="stars" type="text" name="stars" placeholder="Enter the min stars">
+                        <input class="form-control" id="stars" type="text" name="stars" placeholder="Enter the star rating">
                       </li>
-                    </ul>                    
-                  </div>
+                    </ul>
+				  </div>
                   <button id="filter-btn" type="submit" class="btn btn-default btn-lg btn-block">Make me a map!</button>
-                </form>
-              </div>
-            </div>
-          </aside>		
-		</div>
-	  <div class="row">
-		<!-- CARD 1 -->
-		<div class="col-md-4">
-		  <div class="card-deck mb-3 text-left">
-			<div class="card mb-4 shadow-sm">
-			  <div class="card-header">
-				<h2 class="my-0 font-weight-normal">Map</h2>
-			  </div>
-			  <div class="card-body">
-				<a href="map.html"><img src="/static/Images/img3.jpg" alt="Chart" width=100% height=100%></a>
-			  </div>
-			</div>
-		  </div>
-		</div>
+					</form>
+				  </div>
+				</div>
+				</aside>		
+				</div>                 	
+			  </div><!-- End of card-body -->
+			</div><!-- End of card -->
+		  </div><!-- End of card-deck -->
+		</div><!-- End of col -->
+		<br><br>	
 		<!-- CARD 2 -->
-		<div class="col-md-4">
+		<div class="col-md-6">
 		  <div class="card-deck mb-3 text-left">
 			<div class="card mb-4 shadow-sm">
 			  <div class="card-header">
-				<h2 class="my-0 font-weight-normal">Chart</h2>
+				<h2 class="my-0 font-weight-normal">Get Started!</h2>
 			  </div>
 			  <div class="card-body">
-				<a href="chart.html"><img src="/static/Images/img2.jpg" alt="Chart" width=100% height=100%></a>
+			  <!-- FORM 2 -->
+			  <form>
+			  <div class="form-group">
+				<label for="city">Enter a City in Greater Toronto Area: </label>
+				<input type="text" class="form-control" id="city" placeholder="North York">
 			  </div>
-			</div>
-		  </div>
-		</div>
-		<!-- CARD 3 -->
-		<div class="col-md-4">
-		  <div class="card-deck mb-3 text-left">
-			<div class="card mb-4 shadow-sm">
-			  <div class="card-header">
-				<h2 class="my-0 font-weight-normal">Table</h2>
+			  <div class="form-group">
+				<label for="stars">Choose a Star Rating:</label>
+				<select class="form-control" id="stars">
+				  <option>1</option>
+				  <option>1.5</option>
+				  <option>2</option>
+				  <option>2.5</option>
+				  <option>3</option>
+				  <option>3.5</option>
+				  <option>4</option>
+				  <option>4.5</option>
+				  <option>5</option>
+				</select>
 			  </div>
-			  <div class="card-body">
-				<a href="table.html"><img src="/static/Images/img1.jpg" alt="Table" width=100% height=100%></a>
-			  </div>
-			</div>
-		  </div>
-		</div>
-	  </div>
-	</div>
+			  </form>
+			  <!-- BUTTON -->
+				<button id="filter-btn" type="submit" class="btn btn-default btn-lg btn-block">Make me a map!</button>
+				</form>
+				</div>
+				</div>
+				</aside>			  
+			  </div><!-- End of card-body -->
+			</div><!-- End of card -->
+		  </div><!-- End of card-deck -->
+		</div><!-- End of col -->			
+	  </div><!-- End of row -->
+	</div><!-- End of container -->
 	
     <!-- Bootstrap core JavaScript
     ================================================== -->
