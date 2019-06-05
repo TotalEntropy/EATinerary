@@ -45,18 +45,18 @@
             <div class="panel panel-default">
               <div class="panel-heading">Form to generate a map</div>
               <div class="panel-body">
-                <form>
+                <form action="/map.html" roles="form" name="generateMap">
                   <div class="form-group">
                     <!--Code to filter by city-->
                     <ul class="list-group" id="filters">
                       <li class="filter list-group-item">      
-                        <input class="form-control" id="city" type="text" placeholder="Enter a city">
+                        <input class="form-control" id="city" name="city" type="text" placeholder="Enter a city">
                       </li>
                     </ul>
                     <!--Code to filter by city-->
                     <ul class="list-group" id="filters">
                       <li class="filter list-group-item">      
-                        <input class="form-control" id="stars" type="text" placeholder="Enter the min stars">
+                        <input class="form-control" id="stars" type="text" name="stars" placeholder="Enter the min stars">
                       </li>
                     </ul>                    
                   </div>
