@@ -1,5 +1,5 @@
 # Import dependencies
-from flask import Flask, Markup, render_template, jsonify
+from flask import Flask, redirect, render_template
 from flask_pymongo import PyMongo
 import json
 import os
@@ -28,9 +28,10 @@ def home():
 # Map route
 @app.route("/map.html")
 def map():
+
     return render_template("map.html")
 
-# Bhart route
+# Chart route
 @app.route("/chart.html")
 def chart():
     return render_template("chart.html")
