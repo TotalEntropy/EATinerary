@@ -43,22 +43,20 @@
 		<div class="row">
 				<aside class="filters">
             <div class="panel panel-default">
-              <div class="panel-heading">Filter Search</div>
+              <div class="panel-heading">Form to generate a map</div>
               <div class="panel-body">
                 <form>
                   <div class="form-group">
-                    <!--Code to filter by date-->
+                    <!--Code to filter by city-->
                     <ul class="list-group" id="filters">
-                      <li class="filter list-group-item">                        
-                        <label for="date">Enter Date</label>
-                        <input class="form-control" id="datetime" type="text" placeholder="Enter date">
+                      <li class="filter list-group-item">      
+                        <input class="form-control" id="city" type="text" placeholder="Enter a city">
                       </li>
                     </ul>
                     <!--Code to filter by city-->
                     <ul class="list-group" id="filters">
-                      <li class="filter list-group-item">                        
-                        <label for="city">Enter City</label>
-                        <input class="form-control" id="city" type="text" placeholder="Enter city">
+                      <li class="filter list-group-item">      
+                        <input class="form-control" id="stars" type="text" placeholder="Enter the min stars">
                       </li>
                     </ul>                    
                   </div>
@@ -138,4 +136,11 @@
 		duration: 2000
 	}).start(container.set);
 	</script>
+
+	<!-- D3 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+
+	<!-- JS -->
+	<script src="static/js/EATinerary.js"></script>
+
 </body></html>
