@@ -79,7 +79,7 @@
 		  </div>
 		</div>
 		<br><br> -->	
-		<!-- CARD 2 -->		
+		<!-- CARD 1 -->		
 		<div class="col-md-6">
 		<div class="fill">
 		  <div class="card-deck mb-3 text-left">
@@ -88,29 +88,30 @@
 				<h2 class="my-0 font-weight-normal">Get Started!</h2>
 			  </div>
 			  <div class="card-body">
-			  <!-- FORM 2 -->
-			  <form>
+			  <!-- FORM 1 -->
+			  <form method="POST" action="/" roles="form" name="mapForm">
 			  <div class="form-group">
-				<label for="city">Enter a City in Greater Toronto Area: </label>
-				<input type="text" class="form-control" id="city" placeholder="North York">
+				<label for="inputCity">Enter a City in Greater Toronto Area: </label>
+				<input type="text" class="form-control" id="inputCity" name="city" placeholder="North York">
 			  </div>
 			  <div class="form-group">
-				<label for="stars">Choose a Star Rating:</label>
-				<select class="form-control" id="stars">
-				  <option>1</option>
-				  <option>1.5</option>
-				  <option>2</option>
-				  <option>2.5</option>
-				  <option>3</option>
-				  <option>3.5</option>
-				  <option>4</option>
-				  <option>4.5</option>
-				  <option>5</option>
+				<label for="selectStars">Choose a Star Rating:</label>
+				<select class="form-control" id="selectStars" name="stars">
+					<option>0.5</option>
+					<option>1</option>
+					<option>1.5</option>
+					<option>2</option>
+					<option>2.5</option>
+					<option>3</option>
+					<option>3.5</option>
+					<option>4</option>
+					<option>4.5</option>
+					<option>5</option>
 				</select>
 			  </div>
 			  
-			  <!-- BUTTON -->
-			  <button id="filter-btn" type="submit" class="btn btn-default btn-lg btn-block">Make me a map!</button>
+			  <!-- Submit -->
+			  <input type="submit" value="Make me a map!" class="btn btn-primary"></input>
 			  </form>					
 			  </div><!-- End of card-body -->
 			</div><!-- End of card -->
