@@ -18,13 +18,126 @@ var cities = [
   }
 ];
 
+// Cutlery Icon
+var cutlery = L.icon({
+	iconUrl: 'static/Images/cutlery.svg',
+	iconSize:     [45, 95],
+    iconAnchor:   [22, 94],
+    popupAnchor:  [-3, -76]
+});
+
+
+// Vegan and Vegetarian Icon
+var vegan = L.icon({
+	iconUrl: 'static/Images/vegan.png',
+	iconSize:     [38, 95],
+    iconAnchor:   [22, 94],
+    popupAnchor:  [-3, -76]
+});
+
+// Chinese Icon
+var Chinese = L.icon({
+	iconUrl: 'static/Images/Chinese.svg',
+	iconSize:     [38, 95],
+    iconAnchor:   [22, 94],
+    popupAnchor:  [-3, -76]
+});
+
+// Japanese Icon
+var Japanese = L.icon({
+	iconUrl: 'static/Images/Japanese.svg',
+	iconSize:     [38, 95],
+    iconAnchor:   [22, 94],
+    popupAnchor:  [-3, -76]
+});
+
+// Canadian Icon (Poutineries)
+var Canadian = L.icon({
+	iconUrl: 'static/Images/Canada.svg',
+	iconSize:     [38, 95],
+    iconAnchor:   [22, 94],
+    popupAnchor:  [-3, -76]
+});
+
+// American Icon (burgers, fastfood, Hot Dogs, Sandwiches) 
+var American = L.icon({
+	iconUrl: 'static/Images/USA.svg',
+	iconSize:     [38, 95],
+    iconAnchor:   [22, 94],
+    popupAnchor:  [-3, -76]
+});
+
+// Korean Icon
+var Korean = L.icon({
+	iconUrl: 'static/Images/Korean.svg',
+	iconSize:     [38, 95],
+    iconAnchor:   [22, 94],
+    popupAnchor:  [-3, -76]
+});
+
+// Mexican Icon
+var Mexican = L.icon({
+	iconUrl: 'static/Images/Mexican.svg',
+	iconSize:     [38, 95],
+    iconAnchor:   [22, 94],
+    popupAnchor:  [-3, -76]
+});
+
+// Italian Icon
+var Italian = L.icon({
+	iconUrl: 'static/Images/Italian.svg',
+	iconSize:     [38, 95],
+    iconAnchor:   [22, 94],
+    popupAnchor:  [-3, -76]
+});
+
+// Filipino Icon
+var Filipino = L.icon({
+	iconUrl: 'static/Images/Filipino.svg',
+	iconSize:     [38, 95],
+    iconAnchor:   [22, 94],
+    popupAnchor:  [-3, -76]
+});
+
+// Greek
+var Greek = L.icon({
+	iconUrl: 'static/Images/Greek.svg',
+	iconSize:     [38, 95],
+    iconAnchor:   [22, 94],
+    popupAnchor:  [-3, -76]
+});
+
+// Cafes Icon (bubble tea, coffee, tea, cafes
+var cafe = L.icon({
+	iconUrl: 'static/Images/cafe.svg',
+	iconSize:     [38, 95],
+    iconAnchor:   [22, 94],
+    popupAnchor:  [-3, -76]
+});
+
+// Sports Bars
+var sportsbar = L.icon({
+	iconUrl: 'static/Images/Raptors.png',
+	iconSize:     [28, 45],
+    iconAnchor:   [22, 94],
+    popupAnchor:  [-3, -76]
+});
+
+// Dance
+var dance = L.icon({
+	iconUrl: 'static/Images/dance.svg',
+	iconSize:     [28, 45],
+    iconAnchor:   [22, 94],
+    popupAnchor:  [-3, -76]
+});
+
 // An array which will be used to store created cityMarkers
 var cityMarkers = [];
 
 for (var i = 0; i < cities.length; i++) {
   // loop through the cities array, create a new marker, push it to the cityMarkers array
   cityMarkers.push(
-    L.marker(cities[i].location).bindPopup("<h1>" + cities[i].name + "</h1>")
+    L.marker((cities[i].location),{icon: Canadian}).bindPopup("<h1>" + cities[i].name + "</h1>")
   );
 }
 
