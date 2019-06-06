@@ -1,5 +1,5 @@
 # Import dependencies
-from flask import Flask, redirect, render_template
+from flask import Flask, redirect, render_template, request
 from flask_pymongo import PyMongo
 import json
 import os
@@ -21,14 +21,16 @@ restaurants = mongo.db.restaurants
 restaurants.update({}, json_data, upsert=True)
 
 # Home route
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def home():
-    return render_template("EATinerary.html")
+    if request.method == "POST":
+        city = request.form["city"]
+        stars = request.form["stars"]
+        print(city)
+        print(stars)
+        return redirect("/map.html")
 
-# Generate map route
-@app.route("/generateMap")
-def generateMap():
-    return
+    return render_template("EATinerary.html")
 
 # Map route
 @app.route("/map.html")
