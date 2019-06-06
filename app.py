@@ -25,21 +25,25 @@ restaurants.update({}, json_data, upsert=True)
 def home():
     return render_template("EATinerary.html")
 
+# Generate map route
+@app.route("/generateMap")
+def generateMap():
+    return
+
 # Map route
 @app.route("/map.html")
 def map():
-
     return render_template("map.html")
 
-# Chart route
-@app.route("/chart.html")
-def chart():
-    return render_template("chart.html")
+# # Chart route
+# @app.route("/chart.html")
+# def chart():
+#     return render_template("chart.html")
 
-# Table route
-@app.route("/table.html")
-def table():
-    return render_template("table.html")
+# # Table route
+# @app.route("/table.html")
+# def table():
+#     return render_template("table.html")
 
 if __name__ == "__main__": 
     app.run(debug= True)
