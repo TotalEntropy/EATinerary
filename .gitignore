@@ -109,3 +109,4 @@ config.js
 
 # Workspace files
 *.code-workspace
+settings.json
