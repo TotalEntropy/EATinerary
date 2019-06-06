@@ -106,3 +106,6 @@ venv.bak/
 # config files
 config.py
 config.js
+
+# Workspace files
+*.code-workspace
