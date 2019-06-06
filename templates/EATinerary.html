@@ -15,7 +15,6 @@
     <link href="/static/css/product.css" rel="stylesheet">
 	
   </head>
-
   <body>
 
     <!-- Light Nav Bar -->
@@ -38,7 +37,7 @@
 		</h2>
     </div>
 
-	<!-- CARDS -->
+	<!-- CARDS -->     
 	<div class="container">		
 	  <div class="row">
 		<!-- CARD 1 -->
@@ -74,14 +73,15 @@
 				  </div>
 				</div>
 				</aside>		
-				</div>                 	 -->
-			  </div><!-- End of card-body -->
-			</div><!-- End of card -->
-		  </div><!-- End of card-deck -->
-		</div><!-- End of col -->
-		<br><br>	
-		<!-- CARD 2 -->
+		<		</div>                 	 
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<br><br> -->	
+		<!-- CARD 2 -->		
 		<div class="col-md-6">
+		<div class="fill">
 		  <div class="card-deck mb-3 text-left">
 			<div class="card mb-4 shadow-sm">
 			  <div class="card-header">
@@ -108,19 +108,25 @@
 				  <option>5</option>
 				</select>
 			  </div>
-			  </form>
+			  
 			  <!-- BUTTON -->
-				<button id="filter-btn" type="submit" class="btn btn-default btn-lg btn-block">Make me a map!</button>
-				</form>
-				</div>
-				</div>
-				</aside>			  
+			  <button id="filter-btn" type="submit" class="btn btn-default btn-lg btn-block">Make me a map!</button>
+			  </form>					
 			  </div><!-- End of card-body -->
 			</div><!-- End of card -->
 		  </div><!-- End of card-deck -->
-		</div><!-- End of col -->			
+		</div><!-- End of fill -->
+		</div><!-- End of col6 -->			
+		
+		<div class="col-md-6">
+		  <div class="drawing">
+			<br><br>
+            <img src="https://i.gifer.com/7N1a.gif" style="max-width:100%; max-height: auto;" alt="Map drawing">
+		  </div>
+        </div>		
 	  </div><!-- End of row -->
 	</div><!-- End of container -->
+	
 	
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -132,9 +138,9 @@
 	
 	<!-- Popmotion -->
 	<script src="https://unpkg.com/popmotion/dist/popmotion.global.min.js"></script>
-	
+		
 	<script>
-	const container = popmotion.styler(document.querySelector('.container'))
+	const fill = popmotion.styler(document.querySelector('.fill'))
 	popmotion.tween({ 
 		from: { 
 			scale: .2, 
@@ -147,9 +153,24 @@
 			y: 0
 		},
 		duration: 2000
-	}).start(container.set);
+	}).start(fill.set);
 	</script>
 
+	<script>
+	const drawing = popmotion.styler(document.querySelector('.drawing'))
+	popmotion.tween({ 
+		from: { 
+			scale: .2, 
+			opacity: 0,
+		},
+		to: { 
+			scale: 1, 
+			opacity: 1,
+		},
+		duration: 2000
+	}).start(drawing.set);
+	</script>
+	
 	<!-- D3 -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
 
