@@ -3,9 +3,8 @@ var cities = [
   {
     name: "Wok Box",
 	address: "855 Taunton Road E, Unit 4",
-	postal: "L1H 7K5"
-    location: [43.4837976, -79.71702146],
-	
+	postal: "L1H 7K5",
+    location: [43.4837976, -79.71702146]
   },
   {
     name: "Emerald Chinese Restaurant",
@@ -146,7 +145,7 @@ var cityMarkers = [];
 for (var i = 0; i < cities.length; i++) {
   // loop through the cities array, create a new marker, push it to the cityMarkers array
   cityMarkers.push(
-    L.marker((cities[i].location),{icon: dance}).bindPopup("<h1>" + cities[i].name + "</h1>")
+    L.marker((cities[i].location),{icon: sportsbar}).bindPopup("<h1>" + cities[i].name + "</h1>")
   );
 }
 
