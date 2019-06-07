@@ -139,9 +139,11 @@ var dance = L.icon({
     popupAnchor:  [-3, -76]
 });
 
-
 // An array which will be used to store created cityMarkers
 var cityMarkers = [];
+
+// TODO use for each to loop through data and populate cityMarkers
+console.log(data);
 
 for (var i = 0; i < cities.length; i++) {
   // loop through the cities array, create a new marker, push it to the cityMarkers array
@@ -198,5 +200,3 @@ var myMap = L.map("map", {
 // Pass our map layers into our layer control
 // Add the layer control to the map
 L.control.layers(baseMaps, overlayMaps).addTo(myMap);
-
-console.log(data);
