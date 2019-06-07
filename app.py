@@ -1,6 +1,7 @@
 # Import dependencies
 from flask import Flask, redirect, render_template, request
 from flask_pymongo import PyMongo
+from bson.json_util import dumps
 import json
 import os
 
@@ -32,9 +33,11 @@ def home():
         print('city='+city)
         print('Stars=' + str(stars))
         data = restaurants.find({'City Lowercase': city.lower(), 'Stars': {'$gte': stars}})
-        # data = restaurants.find({'City Lowercase': city.lower()})
         print('matching restaurants=' + str(data.count()))
-        return render_template("map.html", map_data=data)
+        data = dumps(data)
+        print(type(data))
+        print(data)
+        return render_template("map.html", data=data)
 
     return render_template("EATinerary.html")
 
