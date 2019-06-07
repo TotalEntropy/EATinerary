@@ -6,7 +6,7 @@ import os
 
 # Initialise
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb://localhost:27017/restaurants"
+app.config["MONGO_URI"] = "mongodb://localhost:27017/EATinerary"
 mongo = PyMongo(app)
 
 # json data
@@ -14,28 +14,34 @@ json_path = os.path.join('data', 'yelp_dataset', 'clean', 'restaurants.json')
 with open(json_path) as data:
     json_data = json.load(data)
 
+list_data = [k for k in json_data.values()]
+
 # Setting up mongodb
 restaurants = mongo.db.restaurants
 
 # Loading the json data into mongodb
-restaurants.update({}, json_data, upsert=True)
+restaurants.delete_many({})
+restaurants.insert_many(list_data, ordered=False)
 
 # Home route
 @app.route("/", methods=["GET", "POST"])
 def home():
     if request.method == "POST":
         city = request.form["city"]
-        stars = request.form["stars"]
-        print(city)
-        print(stars)
-        return redirect("/map.html")
+        stars = float(request.form["stars"])
+        print('city='+city)
+        print('Stars=' + str(stars))
+        data = restaurants.find({'City Lowercase': city.lower(), 'Stars': {'$gte': stars}})
+        # data = restaurants.find({'City Lowercase': city.lower()})
+        print('matching restaurants=' + str(data.count()))
+        return render_template("map.html", map_data=data)
 
     return render_template("EATinerary.html")
 
-# Map route
-@app.route("/map.html")
-def map():
-    return render_template("map.html")
+# # Map route
+# @app.route("/map.html")
+# def map():
+#     return render_template("map.html", map_data=map_data)
 
 # # Chart route
 # @app.route("/chart.html")
