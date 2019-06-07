@@ -38,11 +38,6 @@ def home():
 
     return render_template("EATinerary.html")
 
-# # Map route
-# @app.route("/map.html")
-# def map():
-#     return render_template("map.html", map_data=map_data)
-
 # # Chart route
 # @app.route("/chart.html")
 # def chart():
