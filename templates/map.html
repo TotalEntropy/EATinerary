@@ -16,6 +16,9 @@
 
   <!-- Map CSS -->
   <link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+  <!-- D3 -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
 </head>
 
 <body>
@@ -24,6 +27,10 @@
 
   <!-- API key -->
   <script type="text/javascript" src="static/js/config.js"></script>
+
+  <!-- Jinja variable from app.py -->
+<script>var data = "{{ data|tojson }}";</script>>
+  
   <!-- Our JS -->
   <script type="text/javascript" src="static/js/map.js"></script>
 </body>
