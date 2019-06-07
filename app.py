@@ -34,11 +34,7 @@ def home():
         print('Stars=' + str(stars))
         data = restaurants.find({'City Lowercase': city.lower(), 'Stars': {'$gte': stars}})
         print('matching restaurants=' + str(data.count()))
-        data = dumps(data)
-        print(type(data))
-        print(data)
-        return render_template("map.html", data=data)
-
+        return render_template("map.html", data=dumps(data))
     return render_template("EATinerary.html")
 
 # # Chart route
