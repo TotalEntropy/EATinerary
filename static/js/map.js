@@ -1,19 +1,28 @@
 // An array of cities and their locations
 var cities = [
   {
-    name: "Oshawa",
-    location: [43.4837976, -79.71702146]
+    name: "Wok Box",
+	address: "855 Taunton Road E, Unit 4",
+	postal: "L1H 7K5"
+    location: [43.4837976, -79.71702146],
+	
   },
   {
-    name: "Mississauga",
+    name: "Emerald Chinese Restaurant",
+	address: "30 Eglinton Avenue W",
+	postal: "L5R 3E7",
     location: [43.60549897, -79.65228891]
   },
   {
-    name: "Toronto",
+    name: "Bolt Fresh Bar",
+	address: "1170 Queen Street W",
+	postal: "M6J 1J5",
     location: [43.6428886, -79.4254291]
   },
   {
-    name: "Pickering",
+    name: "Big Boy's Burgers",
+	address: "705 Kingston Road",
+	postal: "L1V 6K3",
     location: [43.8195876, -79.1138711]
   }
 ];
@@ -137,7 +146,7 @@ var cityMarkers = [];
 for (var i = 0; i < cities.length; i++) {
   // loop through the cities array, create a new marker, push it to the cityMarkers array
   cityMarkers.push(
-    L.marker((cities[i].location),{icon: Canadian}).bindPopup("<h1>" + cities[i].name + "</h1>")
+    L.marker((cities[i].location),{icon: dance}).bindPopup("<h1>" + cities[i].name + "</h1>")
   );
 }
 
@@ -149,7 +158,7 @@ var cityLayer = L.layerGroup(cityMarkers);
 var day = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
   attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
   maxZoom: 18,
-  id: "mapbox.streets",
+  id: "mapbox.pirates",
   accessToken: API_KEY
 });
 
@@ -160,10 +169,18 @@ var dark = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?acc
   accessToken: API_KEY
 });
 
+var fun = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+  maxZoom: 18,
+  id: "mapbox.satellite",
+  accessToken: API_KEY
+});
+
 // Only one base layer can be shown at a time
 var baseMaps = {
   RegularHours: day,
-  LateNight: dark
+  LateNight: dark,
+  Satellite: fun
 };
 
 // Overlays that may be toggled on or off
