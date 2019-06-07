@@ -139,13 +139,14 @@ var dance = L.icon({
     popupAnchor:  [-3, -76]
 });
 
+
 // An array which will be used to store created cityMarkers
 var cityMarkers = [];
 
 for (var i = 0; i < cities.length; i++) {
   // loop through the cities array, create a new marker, push it to the cityMarkers array
   cityMarkers.push(
-    L.marker((cities[i].location),{icon: sportsbar}).bindPopup("<h1>" + cities[i].name + "</h1>")
+    L.marker((cities[i].location),{icon: sportsbar}).bindPopup("<h2>" + cities[i].name + "</h2>" + "<h3>" + cities[i].address + "</h3>" + "<h3>" + cities[i].postal + "</h3>")
   );
 }
 
