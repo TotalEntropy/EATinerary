@@ -7,14 +7,8 @@ Aside from these foodies, a growing number of consumers dine at restaurants or o
 
 Although the food service industry looks promising due to increased demand, the unfortunate reality is that many restaurants fail in their first few years. A note-worthy reason for this could be lack of planning and research. 
 
-In order to help both consumers and businesses alike, we gathered Yelp’s dataset to build an interactive dashboard page. The visualizations such as table, map and chart are customizable to meet the specific needs of foodies, non-foodies and businesses alike. User-input will make consumer and business research quick and easy. Filtering by location, cuisine, price category and other options such as wheelchair access, gender neutral washrooms etc, will prove very useful for targeting specific consumer needs and niche marketing. Afterall, no single restaurant has a universal appeal. 
+In order to help both consumers and businesses alike, we gathered Yelp’s dataset to build an interactive restaurant web application. The home page displays a form which allows the user to input city and minimum review star rating. Once the form is submitted, it generates a customizable map to meet the specific needs of foodies, non-foodies and businesses alike. User-input will make consumer and business research quick and easy. Filtering by category, cuisine, vegan, gluten-free and other options will prove very useful for targeting specific consumer needs and niche marketing. Afterall, no single restaurant has a universal appeal. 
 
-Below are our inspiration / planned visualizations with some notes in red font:
+JS library for animation:
+Popmotion -  https://popmotion.io/pure/
 
- ![Inspiration](Images/inspiration.jpg)
-
-
-Will use one of these JS libraries not covered in class:
-* Sweetalert2 (pop-up library) - https://sweetalert2.github.io/
-* Popmotion -  https://popmotion.io/pure/
-* Typed.js - https://mattboldt.com/typed.js/
