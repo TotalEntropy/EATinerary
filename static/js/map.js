@@ -15,7 +15,7 @@ var vegan = L.icon({
 });
 
 // Chinese Icon
-var Chinese = L.icon({
+var chinese = L.icon({
 	iconUrl: 'static/Images/Chinese.svg',
 	iconSize:     [38, 95],
     iconAnchor:   [22, 94],
@@ -23,7 +23,7 @@ var Chinese = L.icon({
 });
 
 // Japanese Icon
-var Japanese = L.icon({
+var japanese = L.icon({
 	iconUrl: 'static/Images/Japanese.svg',
 	iconSize:     [38, 95],
     iconAnchor:   [22, 94],
@@ -31,7 +31,7 @@ var Japanese = L.icon({
 });
 
 // Canadian Icon (Poutineries)
-var Canadian = L.icon({
+var canadian = L.icon({
 	iconUrl: 'static/Images/Canada.svg',
 	iconSize:     [38, 95],
     iconAnchor:   [22, 94],
@@ -39,7 +39,7 @@ var Canadian = L.icon({
 });
 
 // American Icon (burgers, fastfood, Hot Dogs, Sandwiches) 
-var American = L.icon({
+var american = L.icon({
 	iconUrl: 'static/Images/USA.svg',
 	iconSize:     [38, 95],
     iconAnchor:   [22, 94],
@@ -47,7 +47,7 @@ var American = L.icon({
 });
 
 // Korean Icon
-var Korean = L.icon({
+var korean = L.icon({
 	iconUrl: 'static/Images/Korean.svg',
 	iconSize:     [38, 95],
     iconAnchor:   [22, 94],
@@ -55,7 +55,7 @@ var Korean = L.icon({
 });
 
 // Mexican Icon
-var Mexican = L.icon({
+var mexican = L.icon({
 	iconUrl: 'static/Images/Mexican.svg',
 	iconSize:     [38, 95],
     iconAnchor:   [22, 94],
@@ -63,7 +63,7 @@ var Mexican = L.icon({
 });
 
 // Italian Icon
-var Italian = L.icon({
+var italian = L.icon({
 	iconUrl: 'static/Images/Italian.svg',
 	iconSize:     [38, 95],
     iconAnchor:   [22, 94],
@@ -71,7 +71,7 @@ var Italian = L.icon({
 });
 
 // Filipino Icon
-var Filipino = L.icon({
+var filipino = L.icon({
 	iconUrl: 'static/Images/Filipino.svg',
 	iconSize:     [38, 95],
     iconAnchor:   [22, 94],
@@ -79,7 +79,7 @@ var Filipino = L.icon({
 });
 
 // Greek
-var Greek = L.icon({
+var greek = L.icon({
 	iconUrl: 'static/Images/Greek.svg',
 	iconSize:     [38, 95],
     iconAnchor:   [22, 94],
@@ -115,19 +115,76 @@ var restaurantMarkers = [];
 
 console.log(data);
 
+// loop through the data, create a new marker, push it to the restaurantMarkers array
 for (var i = 0; i < data.length; i++) {
-  // loop through the data, create a new marker, push it to the restaurantMarkers array
-  restaurantMarkers.push(
-    L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: cutlery}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
-  );
-}
+
+  var categories = data[i].Categories.toLowerCase().split(",");
+  console.log(categories);
+
+  if (categories.includes("vegan")) {
+    restaurantMarkers.push(
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: vegan}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+    );
+  } else if (categories.includes("chinese")) {
+    restaurantMarkers.push(
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: chinese}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+    );
+  } else if (categories.includes("japanese")) {
+    restaurantMarkers.push(
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: japanese}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+    );
+  } else if (categories.includes("canadian")) {
+    restaurantMarkers.push(
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: canadian}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+    );
+  } else if (categories.includes("american")) {
+    restaurantMarkers.push(
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: american}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+    );
+  } else if (categories.includes("korean")) {
+    restaurantMarkers.push(
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: korean}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+    );
+  } else if (categories.includes("mexican")) {
+    restaurantMarkers.push(
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: mexican}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+    );
+  } else if (categories.includes("italian")) {
+    restaurantMarkers.push(
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: italian}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+    );
+  } else if (categories.includes("filipino")) {
+    restaurantMarkers.push(
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: filipino}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+    );
+  } else if (categories.includes("greek")) {
+    restaurantMarkers.push(
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: greek}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+    );
+  } else if (categories.includes("cafe")) {
+    restaurantMarkers.push(
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: cafe}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+    );
+  } else if (categories.includes("sportsbar")) {
+    restaurantMarkers.push(
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: sportsbar}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+    );
+  } else if (categories.includes("dance")) {
+    restaurantMarkers.push(
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: dance}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+    );
+  } else {
+    restaurantMarkers.push(
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: cutlery}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+    );
+  }
+};
 
 // Add all the restaurantMarkers to a new layer group.
 // Now we can handle them as one group instead of referencing each individually
 var restaurants = L.layerGroup(restaurantMarkers);
 
 // Define variables for our tile layers
-// TODO set regular streets layer
 
 var dark = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
   attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
