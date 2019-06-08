@@ -118,7 +118,7 @@ console.log(data);
 for (var i = 0; i < data.length; i++) {
   // loop through the data, create a new marker, push it to the cityMarkers array
   cityMarkers.push(
-    L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: cutlery}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal Code"] + "</h3>")
+    L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: cutlery}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
   );
 }
 
