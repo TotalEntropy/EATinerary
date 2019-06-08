@@ -6,7 +6,15 @@ var cutlery = L.icon({
     popupAnchor:  [-3, -76]
 });
 
-// Vegan and Vegetarian Icon
+// Gluten-Free Icon
+var glutenFree = L.icon({
+	iconUrl: 'static/Images/gf.png',
+	iconSize:     [25, 45],
+    iconAnchor:   [22, 94],
+    popupAnchor:  [-3, -76]
+});
+
+// Vegan Icon
 var vegan = L.icon({
 	iconUrl: 'static/Images/vegan.png',
 	iconSize:     [38, 95],
@@ -112,6 +120,20 @@ var dance = L.icon({
 
 // An array which will be used to store created restaurantMarkers
 var restaurantMarkers = [];
+var veganMarkers = [];
+var glutenFreeMarkers = [];
+var chineseMarkers = [];
+var japaneseMarkers = [];
+var canadianMarkers = [];
+var americanMarkers = [];
+var koreanMarkers = [];
+var mexicanMarkers = [];
+var italianMarkers = [];
+var filipinoMarkers = [];
+var greekMarkers = [];
+var cafeMarkers = [];
+var sportsbarMarkers = [];
+var danceMarkers = [];
 
 console.log(data);
 
@@ -123,55 +145,59 @@ for (var i = 0; i < data.length; i++) {
 
   // If statement to assign the markers their respective icon
   if (categories.includes("vegan")) {
-    restaurantMarkers.push(
+    veganMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: vegan}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
     );
+  } else if (categories.includes("gluten-free")) {
+    glutenFreeMarkers.push(
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: glutenFree}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+    );
   } else if (categories.includes("chinese")) {
-    restaurantMarkers.push(
+    chineseMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: chinese}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
     );
   } else if (categories.includes("japanese")) {
-    restaurantMarkers.push(
+    japaneseMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: japanese}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
     );
-  } else if (categories.includes("canadian")) {
-    restaurantMarkers.push(
+  } else if (categories.includes("canadian (new)")) {
+    canadianMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: canadian}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
     );
-  } else if (categories.includes("american")) {
-    restaurantMarkers.push(
+  } else if (categories.includes("american (new)")) {
+    americanMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: american}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
     );
   } else if (categories.includes("korean")) {
-    restaurantMarkers.push(
+    koreanMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: korean}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
     );
   } else if (categories.includes("mexican")) {
-    restaurantMarkers.push(
+    mexicanMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: mexican}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
     );
   } else if (categories.includes("italian")) {
-    restaurantMarkers.push(
+    italianMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: italian}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
     );
   } else if (categories.includes("filipino")) {
-    restaurantMarkers.push(
+    filipinoMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: filipino}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
     );
   } else if (categories.includes("greek")) {
-    restaurantMarkers.push(
+    greekMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: greek}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
     );
-  } else if (categories.includes("cafe")) {
-    restaurantMarkers.push(
+  } else if (categories.includes("cafes")) {
+    cafeMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: cafe}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
     );
-  } else if (categories.includes("sportsbar")) {
-    restaurantMarkers.push(
+  } else if (categories.includes("sports bars")) {
+    sportsbarMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: sportsbar}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
     );
-  } else if (categories.includes("dance")) {
-    restaurantMarkers.push(
+  } else if (categories.includes("dance clubs")) {
+    danceMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: dance}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
     );
   } else {
@@ -181,11 +207,34 @@ for (var i = 0; i < data.length; i++) {
   }
 };
 
-// Add all the restaurantMarkers to a new layer group.
+// Add all the Markers to a new layer group.
 // Now we can handle them as one group instead of referencing each individually
 var restaurants = L.layerGroup(restaurantMarkers);
+var veganM = L.layerGroup(veganMarkers);
+var glutenFreeM = L.layerGroup(glutenFreeMarkers);
+var chineseM = L.layerGroup(chineseMarkers);
+var japaneseM = L.layerGroup(japaneseMarkers);
+var canadianM = L.layerGroup(canadianMarkers);
+var americanM = L.layerGroup(americanMarkers);
+var koreanM = L.layerGroup(koreanMarkers);
+var mexicanM = L.layerGroup(mexicanMarkers);
+var italianM = L.layerGroup(italianMarkers);
+var filipinoM = L.layerGroup(filipinoMarkers);
+var greekM = L.layerGroup(greekMarkers);
+var cafeM = L.layerGroup(cafeMarkers);
+var sportsbarM = L.layerGroup(sportsbarMarkers);
+var danceM = L.layerGroup(danceMarkers);
+
+
+
 
 // Define variables for our tile layers
+var day = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+  maxZoom: 18,
+  id: "mapbox.streets",
+  accessToken: API_KEY
+});
 
 var dark = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
   attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
@@ -210,7 +259,7 @@ var pirates = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?
 
 // Only one base layer can be shown at a time
 var baseMaps = {
-  // TODO regular
+  Day: day,
   Night: dark,
   Satellite: satellite,
   Fun: pirates
@@ -218,14 +267,28 @@ var baseMaps = {
 
 // Overlays that may be toggled on or off
 var overlayMaps = {
-  Restaurants: restaurants
+  Restaurants: restaurants,
+  Vegan: veganM,
+  GlutenFree: glutenFreeM,
+  Chinese: chineseM,
+  Japanese: japaneseM,
+  Canadian: canadianM,
+  American: americanM,
+  Korean: koreanM,
+  Mexican: mexicanM,
+  Italian: italianM,
+  Filipino: filipinoM,
+  Greek: greekM,
+  Cafe: cafeM,
+  Sportsbar: sportsbarM,
+  Dance: danceM
 };
 
 // Create map object and set default layers
 var myMap = L.map("map", {
   center: [43.7179997, -79.42919975],
-  zoom: 8,
-  layers: [satellite, restaurants] // TODO set streets as default
+  zoom: 10,
+  layers: [day, restaurants]
 });
 
 // Pass our map layers into our layer control
