@@ -118,7 +118,7 @@ var dance = L.icon({
     popupAnchor:  [-3, -76]
 });
 
-// An array which will be used to store created restaurantMarkers
+// Arrays to store markers
 var restaurantMarkers = [];
 var veganMarkers = [];
 var glutenFreeMarkers = [];
@@ -137,7 +137,8 @@ var danceMarkers = [];
 
 console.log(data);
 
-// loop through the data, create a new marker, push it to the restaurantMarkers array
+
+// loop through the data, create a new marker, push it to the corresponding markers array
 for (var i = 0; i < data.length; i++) {
 
   // Split the categories into array
@@ -146,69 +147,69 @@ for (var i = 0; i < data.length; i++) {
   // If statement to assign the markers their respective icon
   if (categories.includes("vegan")) {
     veganMarkers.push(
-      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: vegan}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: vegan}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
     );
   } else if (categories.includes("gluten-free")) {
     glutenFreeMarkers.push(
-      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: glutenFree}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: glutenFree}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
     );
   } else if (categories.includes("chinese")) {
     chineseMarkers.push(
-      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: chinese}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: chinese}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
     );
   } else if (categories.includes("japanese")) {
     japaneseMarkers.push(
-      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: japanese}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: japanese}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
     );
   } else if (categories.includes("canadian (new)")) {
     canadianMarkers.push(
-      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: canadian}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: canadian}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
     );
   } else if (categories.includes("american (new)")) {
     americanMarkers.push(
-      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: american}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: american}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
     );
   } else if (categories.includes("korean")) {
     koreanMarkers.push(
-      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: korean}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: korean}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
     );
   } else if (categories.includes("mexican")) {
     mexicanMarkers.push(
-      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: mexican}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: mexican}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
     );
   } else if (categories.includes("italian")) {
     italianMarkers.push(
-      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: italian}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: italian}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
     );
   } else if (categories.includes("filipino")) {
     filipinoMarkers.push(
-      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: filipino}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: filipino}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
     );
   } else if (categories.includes("greek")) {
     greekMarkers.push(
-      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: greek}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: greek}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
     );
   } else if (categories.includes("cafes")) {
     cafeMarkers.push(
-      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: cafe}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: cafe}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
     );
   } else if (categories.includes("sports bars")) {
     sportsbarMarkers.push(
-      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: sportsbar}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: sportsbar}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
     );
   } else if (categories.includes("dance clubs")) {
     danceMarkers.push(
-      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: dance}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: dance}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
     );
   } else {
     restaurantMarkers.push(
-      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: cutlery}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: cutlery}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
     );
   }
 };
 
-// Add all the Markers to a new layer group.
-// Now we can handle them as one group instead of referencing each individually
+// Add all the Markers to new layer groups.
+// Now we can handle categories as one group instead of referencing each individually
 var restaurants = L.layerGroup(restaurantMarkers);
 var veganM = L.layerGroup(veganMarkers);
 var glutenFreeM = L.layerGroup(glutenFreeMarkers);
