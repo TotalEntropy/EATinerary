@@ -145,67 +145,66 @@ for (var i = 0; i < data.length; i++) {
   var categories = data[i].Categories.toLowerCase().split(",");
 
   // If statement to assign the markers their respective icon
-  // TODO perform the push after the correct marker is assigned and use an if statement to evaluate if the chours is not nulll
   if (categories.includes("vegan")) {
     veganMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: vegan}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
-    )
+    );
   } else if (categories.includes("gluten-free")) {
     glutenFreeMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: glutenFree}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
-    )
+    );
   } else if (categories.includes("chinese")) {
     chineseMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: chinese}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
-    )
+    );
   } else if (categories.includes("japanese")) {
     japaneseMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: japanese}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
-    )
+    );
   } else if (categories.includes("canadian (new)")) {
     canadianMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: canadian}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
-    )
+    );
   } else if (categories.includes("american (new)")) {
     americanMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: american}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
-    )
+    );
   } else if (categories.includes("korean")) {
     koreanMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: korean}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
-    )
+    );
   } else if (categories.includes("mexican")) {
     mexicanMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: mexican}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
-    )
+    );
   } else if (categories.includes("italian")) {
     italianMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: italian}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
-    )
+    );
   } else if (categories.includes("filipino")) {
     filipinoMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: filipino}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
-    )
+    );
   } else if (categories.includes("greek")) {
     greekMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: greek}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
-    )
+    );
   } else if (categories.includes("cafes")) {
     cafeMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: cafe}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
-    )
+    );
   } else if (categories.includes("sports bars")) {
     sportsbarMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: sportsbar}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
-    )
+    );
   } else if (categories.includes("dance clubs")) {
     danceMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: dance}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
-    )
+    );
   } else {
     restaurantMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: cutlery}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>" + "<h3>Hours: " + data[i].Hours + "</h3>")
-    )
+    );
   }
 };
 
