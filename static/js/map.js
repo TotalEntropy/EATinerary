@@ -118,8 +118,10 @@ console.log(data);
 // loop through the data, create a new marker, push it to the restaurantMarkers array
 for (var i = 0; i < data.length; i++) {
 
+  // Split the categories into array
   var categories = data[i].Categories.toLowerCase().split(",");
 
+  // If statement to assign the markers their respective icon
   if (categories.includes("vegan")) {
     restaurantMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: vegan}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
