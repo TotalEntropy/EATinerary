@@ -287,8 +287,8 @@ var overlayMaps = {
 
 // Create map object and set default layers
 var myMap = L.map("map", {
-  center: [43.7179997, -79.42919975],
-  zoom: 10,
+  center: [43.7179997, -79.4178587],
+  zoom: 12,
   layers: [day, restaurants, veganM, glutenFreeM, chineseM, japaneseM, canadianM, americanM, koreanM, mexicanM, italianM, filipinoM, greekM, cafeM, sportsbarM, danceM]
 });
 
