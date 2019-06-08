@@ -1,31 +1,3 @@
-// An array of cities and their locations
-var cities = [
-  {
-    name: "Wok Box",
-	address: "855 Taunton Road E, Unit 4",
-	postal: "L1H 7K5",
-    location: [43.4837976, -79.71702146]
-  },
-  {
-    name: "Emerald Chinese Restaurant",
-	address: "30 Eglinton Avenue W",
-	postal: "L5R 3E7",
-    location: [43.60549897, -79.65228891]
-  },
-  {
-    name: "Bolt Fresh Bar",
-	address: "1170 Queen Street W",
-	postal: "M6J 1J5",
-    location: [43.6428886, -79.4254291]
-  },
-  {
-    name: "Big Boy's Burgers",
-	address: "705 Kingston Road",
-	postal: "L1V 6K3",
-    location: [43.8195876, -79.1138711]
-  }
-];
-
 // Cutlery Icon
 var cutlery = L.icon({
 	iconUrl: 'static/Images/cutlery.svg',
@@ -33,7 +5,6 @@ var cutlery = L.icon({
     iconAnchor:   [22, 94],
     popupAnchor:  [-3, -76]
 });
-
 
 // Vegan and Vegetarian Icon
 var vegan = L.icon({
@@ -142,13 +113,12 @@ var dance = L.icon({
 // An array which will be used to store created cityMarkers
 var cityMarkers = [];
 
-// TODO use for each to loop through data and populate cityMarkers
 console.log(data);
 
-for (var i = 0; i < cities.length; i++) {
-  // loop through the cities array, create a new marker, push it to the cityMarkers array
+for (var i = 0; i < data.length; i++) {
+  // loop through the data, create a new marker, push it to the cityMarkers array
   cityMarkers.push(
-    L.marker((cities[i].location),{icon: sportsbar}).bindPopup("<h2>" + cities[i].name + "</h2>" + "<h3>" + cities[i].address + "</h3>" + "<h3>" + cities[i].postal + "</h3>")
+    L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: cutlery}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal Code"] + "</h3>")
   );
 }
 
