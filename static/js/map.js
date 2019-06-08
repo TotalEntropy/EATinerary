@@ -110,29 +110,24 @@ var dance = L.icon({
     popupAnchor:  [-3, -76]
 });
 
-// An array which will be used to store created cityMarkers
-var cityMarkers = [];
+// An array which will be used to store created restaurantMarkers
+var restaurantMarkers = [];
 
 console.log(data);
 
 for (var i = 0; i < data.length; i++) {
-  // loop through the data, create a new marker, push it to the cityMarkers array
-  cityMarkers.push(
+  // loop through the data, create a new marker, push it to the restaurantMarkers array
+  restaurantMarkers.push(
     L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: cutlery}).bindPopup("<h2>" + data[i].Name + "</h2>" + "<h3>" + data[i].Address + "</h3>" + "<h3>" + data[i]["Postal code"] + "</h3>")
   );
 }
 
-// Add all the cityMarkers to a new layer group.
+// Add all the restaurantMarkers to a new layer group.
 // Now we can handle them as one group instead of referencing each individually
-var cityLayer = L.layerGroup(cityMarkers);
+var restaurants = L.layerGroup(restaurantMarkers);
 
 // Define variables for our tile layers
-var day = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-  maxZoom: 18,
-  id: "mapbox.pirates",
-  accessToken: API_KEY
-});
+// TODO set regular streets layer
 
 var dark = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
   attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
@@ -141,30 +136,38 @@ var dark = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?acc
   accessToken: API_KEY
 });
 
-var fun = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+var satellite = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
   attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
   maxZoom: 18,
   id: "mapbox.satellite",
   accessToken: API_KEY
 });
 
+var pirates = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+  maxZoom: 18,
+  id: "mapbox.pirates",
+  accessToken: API_KEY
+});
+
 // Only one base layer can be shown at a time
 var baseMaps = {
-  RegularHours: day,
-  LateNight: dark,
-  Satellite: fun
+  // TODO regular
+  Night: dark,
+  Satellite: satellite,
+  Fun: pirates
 };
 
 // Overlays that may be toggled on or off
 var overlayMaps = {
-  Cities: cityLayer
+  Restaurants: restaurants
 };
 
 // Create map object and set default layers
 var myMap = L.map("map", {
   center: [43.7179997, -79.42919975],
   zoom: 8,
-  layers: [day, cityLayer]
+  layers: [satellite, restaurants] // TODO set streets as default
 });
 
 // Pass our map layers into our layer control
