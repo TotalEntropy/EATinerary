@@ -268,7 +268,7 @@ var baseMaps = {
 
 // Overlays that may be toggled on or off
 var overlayMaps = {
-  Restaurants: restaurants,
+  Unlabeled: restaurants,
   Vegan: veganM,
   GlutenFree: glutenFreeM,
   Chinese: chineseM,
@@ -289,7 +289,7 @@ var overlayMaps = {
 var myMap = L.map("map", {
   center: [43.7179997, -79.42919975],
   zoom: 10,
-  layers: [day, restaurants]
+  layers: [day, restaurants, veganM, glutenFreeM, chineseM, japaneseM, canadianM, americanM, koreanM, mexicanM, italianM, filipinoM, greekM, cafeM, sportsbarM, danceM]
 });
 
 // Pass our map layers into our layer control
