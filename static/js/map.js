@@ -119,7 +119,6 @@ console.log(data);
 for (var i = 0; i < data.length; i++) {
 
   var categories = data[i].Categories.toLowerCase().split(",");
-  console.log(categories);
 
   if (categories.includes("vegan")) {
     restaurantMarkers.push(
