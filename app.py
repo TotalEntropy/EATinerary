@@ -2,12 +2,13 @@
 from flask import Flask, redirect, render_template, request
 from flask_pymongo import PyMongo
 from bson.json_util import dumps
+from boto.s3.connection import S3Connection
 import json
 import os
 
 # Initialise
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb://localhost:27017/EATinerary"
+app.config["MONGO_URI"] = MONGODB_URI or "mongodb://localhost:27017/EATinerary"
 mongo = PyMongo(app)
 
 # json data
@@ -36,6 +37,11 @@ def home():
         print('matching restaurants=' + str(data.count()))
         return render_template("map.html", data=dumps(data))
     return render_template("EATinerary.html")
+
+# Route to fetch api key
+@app.route("/key/", method=["POST"])
+def key():
+    return key
 
 # # Chart route
 # @app.route("/chart.html")
