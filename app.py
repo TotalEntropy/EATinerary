@@ -2,13 +2,14 @@
 from flask import Flask, redirect, render_template, request
 from flask_pymongo import PyMongo
 from bson.json_util import dumps
-from boto.s3.connection import S3Connection
+# from boto.s3.connection import S3Connection
 import json
 import os
 
 # Initialise
 app = Flask(__name__)
-mongoHeroku = S3Connection(os.environ['MONGODB_URI'])
+port = int(os.environ.get("PORT", 5000))
+# mongoHeroku = S3Connection(os.environ['MONGODB_URI'])
 app.config["MONGO_URI"] = mongoHeroku or "mongodb://localhost:27017/EATinerary"
 mongo = PyMongo(app)
 
@@ -55,4 +56,4 @@ def home():
 #     return render_template("table.html")
 
 if __name__ == "__main__": 
-    app.run(debug= True)
+    app.run(host='0.0.0.0', port=port, debug= True)
