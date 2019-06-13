@@ -226,74 +226,71 @@ var cafeM = L.layerGroup(cafeMarkers);
 var sportsbarM = L.layerGroup(sportsbarMarkers);
 var danceM = L.layerGroup(danceMarkers);
 
-d3.request("/key/").post("", function(error,data) {
-  console.log(error)
-  console.log(data);
-})
+d3.text("/key/", {method: "POST"}).then(MapboxApiKey => {
+    // Define variables for our tile layers
+  var day = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+    attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+    maxZoom: 18,
+    id: "mapbox.streets",
+    accessToken: MapboxApiKey
+  });
 
-// Define variables for our tile layers
-var day = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-  maxZoom: 18,
-  id: "mapbox.streets",
-  accessToken: MapboxApiKey
+  var dark = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+    attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+    maxZoom: 18,
+    id: "mapbox.dark",
+    accessToken: MapboxApiKey
+  });
+
+  var satellite = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+    attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+    maxZoom: 18,
+    id: "mapbox.satellite",
+    accessToken: MapboxApiKey
+  });
+
+  var pirates = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+    attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+    maxZoom: 18,
+    id: "mapbox.pirates",
+    accessToken: MapboxApiKey
+  });
+
+    // Only one base layer can be shown at a time
+  var baseMaps = {
+    Day: day,
+    Night: dark,
+    Satellite: satellite,
+    Fun: pirates
+  };
+
+  // Overlays that may be toggled on or off
+  var overlayMaps = {
+    Unlabeled: restaurants,
+    Vegan: veganM,
+    GlutenFree: glutenFreeM,
+    Chinese: chineseM,
+    Japanese: japaneseM,
+    Canadian: canadianM,
+    American: americanM,
+    Korean: koreanM,
+    Mexican: mexicanM,
+    Italian: italianM,
+    Filipino: filipinoM,
+    Greek: greekM,
+    Cafe: cafeM,
+    Sportsbar: sportsbarM,
+    Dance: danceM
+  };
+
+  // Create map object and set default layers
+  var myMap = L.map("map", {
+    center: [43.7179997, -79.4178587],
+    zoom: 12,
+    layers: [day, restaurants, veganM, glutenFreeM, chineseM, japaneseM, canadianM, americanM, koreanM, mexicanM, italianM, filipinoM, greekM, cafeM, sportsbarM, danceM]
+  });
+
+  // Pass our map layers into our layer control
+  // Add the layer control to the map
+  L.control.layers(baseMaps, overlayMaps).addTo(myMap);
 });
-
-var dark = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-  maxZoom: 18,
-  id: "mapbox.dark",
-  accessToken: MapboxApiKey
-});
-
-var satellite = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-  maxZoom: 18,
-  id: "mapbox.satellite",
-  accessToken: MapboxApiKey
-});
-
-var pirates = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-  maxZoom: 18,
-  id: "mapbox.pirates",
-  accessToken: MapboxApiKey
-});
-
-// Only one base layer can be shown at a time
-var baseMaps = {
-  Day: day,
-  Night: dark,
-  Satellite: satellite,
-  Fun: pirates
-};
-
-// Overlays that may be toggled on or off
-var overlayMaps = {
-  Unlabeled: restaurants,
-  Vegan: veganM,
-  GlutenFree: glutenFreeM,
-  Chinese: chineseM,
-  Japanese: japaneseM,
-  Canadian: canadianM,
-  American: americanM,
-  Korean: koreanM,
-  Mexican: mexicanM,
-  Italian: italianM,
-  Filipino: filipinoM,
-  Greek: greekM,
-  Cafe: cafeM,
-  Sportsbar: sportsbarM,
-  Dance: danceM
-};
-
-// Create map object and set default layers
-var myMap = L.map("map", {
-  center: [43.7179997, -79.4178587],
-  zoom: 12,
-  layers: [day, restaurants, veganM, glutenFreeM, chineseM, japaneseM, canadianM, americanM, koreanM, mexicanM, italianM, filipinoM, greekM, cafeM, sportsbarM, danceM]
-});
-
-// Pass our map layers into our layer control
-// Add the layer control to the map
-L.control.layers(baseMaps, overlayMaps).addTo(myMap);
