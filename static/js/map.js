@@ -226,8 +226,10 @@ var cafeM = L.layerGroup(cafeMarkers);
 var sportsbarM = L.layerGroup(sportsbarMarkers);
 var danceM = L.layerGroup(danceMarkers);
 
-
-
+d3.request("/key/").post("", function(error,data) {
+  console.log(error)
+  console.log(data);
+})
 
 // Define variables for our tile layers
 var day = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
