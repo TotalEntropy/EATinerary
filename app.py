@@ -38,10 +38,10 @@ def home():
         return render_template("map.html", data=dumps(data))
     return render_template("EATinerary.html")
 
-# # Route to fetch api key
-# @app.route("/key/", method=["POST"])
-# def key():
-#     return key
+# Route to fetch api key
+@app.route("/key/", methods=["POST"])
+def key():
+    return str(os.environ.get('MapboxApiKey'))
 
 # # Chart route
 # @app.route("/chart.html")
