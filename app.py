@@ -8,7 +8,8 @@ import os
 
 # Initialise
 app = Flask(__name__)
-app.config["MONGO_URI"] = MONGODB_URI or "mongodb://localhost:27017/EATinerary"
+mongoHeroku = S3Connection(os.environ['MONGODB_URI'])
+app.config["MONGO_URI"] = mongoHeroku or "mongodb://localhost:27017/EATinerary"
 mongo = PyMongo(app)
 
 # json data
@@ -38,10 +39,10 @@ def home():
         return render_template("map.html", data=dumps(data))
     return render_template("EATinerary.html")
 
-# Route to fetch api key
-@app.route("/key/", method=["POST"])
-def key():
-    return key
+# # Route to fetch api key
+# @app.route("/key/", method=["POST"])
+# def key():
+#     return key
 
 # # Chart route
 # @app.route("/chart.html")
