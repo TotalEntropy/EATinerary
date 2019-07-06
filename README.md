@@ -9,14 +9,16 @@ In order to help both consumers and businesses alike, we gathered Yelp’s datas
 
 Machine learning will also be used to run Analysis on Yelp reviews. The goal is use Machine learning algorithm that analyzes a review and determines if it is an outlier. 
 
-Breakdown of work:
-- Data Cleaning on some spelling mistakes on the data (Anna Francesca Gatus)
-- Switch to postgress SQL and SQLAlchemy (Brian)
-- One page REST design (Brian Haley and Anna Francesca Gatus)
-- Breakdown the querying based different filtering for a better user experience (Anna Francesca Gatus with some assistance from Brian)
-- Cleanng up existing code for speed and better error handling. (Brian) 
-- Machine analyzes the string and compares in an algorithm. (Brian)
+### Breakdown of work:
+| Item  | Member |
+| ------------- | ------------- |
+| Data cleaning on some spelling mistakes on the data  | Anna Francesca Gatus  |
+| Switch to postgress SQL and SQLAlchemy  | Brian  |
+| One page REST design | Brian Haley and Anna Francesca Gatus |
+| Breakdown the querying based different filtering for a better user experience | Anna Francesca Gatus with some assistance from Brian |
+| Cleaning up existing code for speed and better error handling | Brian |
+| Machine analyzes the string and compares in an algorithm | Brian |
 
-End result
+### End result
 A more user-friendly, more indepth and more helpful interactive map.
 Machine learning algorithm that analyzes a review and determines if it is an outlier. 
