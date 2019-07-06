@@ -17,7 +17,7 @@ Machine learning will also be used to run Analysis on Yelp reviews. The goal is 
 | One page REST design | Brian Haley and Anna Francesca Gatus |
 | Breakdown the querying based different filtering for a better user experience | Anna Francesca Gatus with some assistance from Brian |
 | Cleaning up existing code for speed and better error handling | Brian |
-| Machine analyzes the string and compares in an algorithm | Brian |
+| Machine learning algorith to analyse a given review and predict the number of stars | Brian |
 
 ### End result
 A more user-friendly, more indepth and more helpful interactive map.
