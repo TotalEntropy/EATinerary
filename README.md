@@ -12,12 +12,12 @@ Machine learning will also be used to run Analysis on Yelp reviews. The goal is 
 ### Breakdown of work:
 | Item  | Member |
 | ------------- | ------------- |
-| Data cleaning on some spelling mistakes on the data  | Anna Francesca Gatus  |
+| Data cleaning on some spelling mistakes on the data  | Gatus  |
 | Switch to postgress SQL and SQLAlchemy  | Brian  |
-| One page REST design | Brian Haley and Anna Francesca Gatus |
-| Breakdown the querying based different filtering for a better user experience | Anna Francesca Gatus with some assistance from Brian |
+| One page REST design | Brian and Gatus |
+| Breakdown the querying based on different filtering for a better user experience | Gatus with some assistance from Brian |
 | Cleaning up existing code for speed and better error handling | Brian |
-| Machine analyzes the string and compares in an algorithm | Brian |
+| Machine analyzes the string and compares in an algorithm | Brian and Gatus|
 
 ### End result
 A more user-friendly, more indepth and more helpful interactive map.
