@@ -43,6 +43,11 @@ def home():
 def key():
     return str(os.environ.get('MapboxApiKey'))
 
+# Coming soon route
+@app.route("/soon.html")
+def soon():
+    return render_template("soon.html")
+
 # # Chart route
 # @app.route("/chart.html")
 # def chart():
