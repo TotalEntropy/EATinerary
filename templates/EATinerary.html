@@ -13,73 +13,36 @@
 
     <!-- Custom styles for this template -->
     <link href="/static/css/product.css" rel="stylesheet">
+	<link href="/static/css/custom.css" rel="stylesheet">
 	
   </head>
   <body>
-
+	
     <!-- Light Nav Bar -->
-	<!-- <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white	 border-bottom shadow-sm">
+	<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white	 border-bottom shadow-sm">
 	  <h5 class="my-0 mr-md-auto font-weight-normal">
 		<a href="/"><img src="/static/Images/logo.JPG" alt="Eatinerary" width=40% height=40% >
 	  </h5>
 	  <nav class="my-2 my-md-0 mr-md-3">
 		<a class="p-2 text-dark" href="/map.html">Map</a>
-		<a class="p-2 text-dark" href="/map2.html">Map2</a>
-		<a class="p-2 text-dark" href="/map3.html">Map3</a>    
+		<a class="p-2 text-dark" href="/soon.html">Reviews</a>
+		<a class="p-2 text-dark" href="/soon.html">About</a>    
 	  </nav>
-	</div> -->
+	</div>
 
 	<!-- Jumbotron -->
     <div class="jumbotron text-center" style="background-image: url(	https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v149-lp-249-foodillutration_2.jpg?auto=format&bg=F4F4F3&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-1.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1000&s=9f6eb8ccdf258d69542f9ba0aa182058); background-size: 100%; height: 100%;">
 		<h2 class="my-0 font-weight-normal">
-			<br>Eatinerary
-			<br>Web Application
+			<br>Let us help with your
+			<br>EATinerary
 		</h2>
     </div>
 
 	<!-- CARDS -->     
 	<div class="container">		
 	  <div class="row">
+		
 		<!-- CARD 1 -->
-		<!-- <div class="col-md-6">
-		  <div class="card-deck mb-3 text-left">
-			<div class="card mb-4 shadow-sm">
-			  <div class="card-header">
-				<h2 class="my-0 font-weight-normal">Get Started!</h2>
-			  </div>
-			  <div class="card-body"> -->
-			  <!-- FORM 1 -->
-			<!-- <aside class="filters">
-            <div class="panel panel-default">
-              <div class="panel-heading">Form to generate a map</div>
-              <div class="panel-body">
-                <form action="/map.html" roles="form" name="generateMap">
-                  <div class="form-group"> -->
-                    <!--Code to filter by city-->					
-                    <!-- <ul class="list-group" id="filters">
-                      <li class="filter list-group-item">      
-                        <input class="form-control" id="city" name="city" type="text" placeholder="Enter a city">
-                      </li>
-                    </ul> -->
-                    <!--Code to filter by stars-->
-                    <!-- <ul class="list-group" id="filters">
-                      <li class="filter list-group-item">      
-                        <input class="form-control" id="stars" type="text" name="stars" placeholder="Enter the star rating">
-                      </li>
-                    </ul>
-				  </div>
-                  <button id="filter-btn" type="submit" class="btn btn-default btn-lg btn-block">Make me a map!</button>
-					</form>
-				  </div>
-				</div>
-				</aside>		
-		<		</div>                 	 
-			  </div>
-			</div>
-		  </div>
-		</div>
-		<br><br> -->	
-		<!-- CARD 1 -->		
 		<div class="col-md-6">
 		<div class="fill">
 		  <div class="card-deck mb-3 text-left">
@@ -119,11 +82,20 @@
 		</div><!-- End of fill -->
 		</div><!-- End of col6 -->			
 		
+		<!-- REVIEWS CARD -->  
 		<div class="col-md-6">
-		  <div class="drawing">
-			<br><br>
-            <img src="https://i.gifer.com/7N1a.gif" style="max-width:100%; max-height: auto;" alt="Map drawing">
+		<div class="flip-card">
+		  <div class="flip-card-inner">
+			<div class="flip-card-front">
+			  <img src="/static/Images/reviews.jpg" style="width:300px;height:300px;" alt="Reviews">
+			</div>
+			<div class="flip-card-back">
+			  <br><h3>Machine Learning</h3> 
+			  <h3>Applied on Yelp Reviews</h3> 
+			  <a href="/soon.html" class="btn btn-light">Check it out!</a>
+			</div>
 		  </div>
+		</div>
         </div>		
 	  </div><!-- End of row -->
 	</div><!-- End of container -->
@@ -136,41 +108,6 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="/static/css/popper.min.js.download"></script>
     <script src="/static/css/bootstrap.min.js.download"></script>
-	
-	<!-- Popmotion -->
-	<script src="https://unpkg.com/popmotion/dist/popmotion.global.min.js"></script>
-		
-	<script>
-	const fill = popmotion.styler(document.querySelector('.fill'))
-	popmotion.tween({ 
-		from: { 
-			scale: .2, 
-			opacity: 0,
-			y: -300
-		},
-		to: { 
-			scale: 1, 
-			opacity: 1,
-			y: 0
-		},
-		duration: 2000
-	}).start(fill.set);
-	</script>
-
-	<script>
-	const drawing = popmotion.styler(document.querySelector('.drawing'))
-	popmotion.tween({ 
-		from: { 
-			scale: .2, 
-			opacity: 0,
-		},
-		to: { 
-			scale: 1, 
-			opacity: 1,
-		},
-		duration: 2000
-	}).start(drawing.set);
-	</script>
 	
 	<!-- D3 -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
