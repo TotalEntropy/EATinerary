@@ -13,43 +13,16 @@
 
     <!-- Custom styles for this template -->
     <link href="/static/css/product.css" rel="stylesheet">
-	<link href="/static/css/custom.css" rel="stylesheet">
-	
+	<!-- <link href="/static/css/custom.css" rel="stylesheet"> -->
+	<link href="/static/css/custom1.css" rel="stylesheet">
   </head>
+  
   <body>
+  <!-- <body onload="myFunction()" style="margin:0;">
+  <div id="loader"></div>
+  <div style="display:none;" id="myDiv" class="animate-bottom"> -->
+  
 
-	<!--Preloader-->
-	<div class="pre-loader">
-	  <div class="sk-fading-circle">
-		<div class="sk-circle1 sk-circle"></div>
-		<div class="sk-circle2 sk-circle"></div>
-		<div class="sk-circle3 sk-circle"></div>
-		<div class="sk-circle4 sk-circle"></div>
-		<div class="sk-circle5 sk-circle"></div>
-		<div class="sk-circle6 sk-circle"></div>
-		<div class="sk-circle7 sk-circle"></div>
-		<div class="sk-circle8 sk-circle"></div>
-		<div class="sk-circle9 sk-circle"></div>
-		<div class="sk-circle10 sk-circle"></div>
-		<div class="sk-circle11 sk-circle"></div>
-		<div class="sk-circle12 sk-circle"></div>
-	  </div>
-	</div>
-	
-	<!-- PRELOADER -->
-	<script>
-	(function($){
-  'use strict';
-    $(window).on('load', function () {
-        if ($(".pre-loader").length > 0)
-        {
-            $(".pre-loader").fadeOut("slow");
-        }
-    });
-	})(jQuery)
-	</script>
-
-	
     <!-- Light Nav Bar -->
 	<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white	 border-bottom shadow-sm">
 	  <h5 class="my-0 mr-md-auto font-weight-normal">
@@ -132,6 +105,8 @@
 	  </div><!-- End of row -->
 	</div><!-- End of container -->
 	
+	<!-- End of id="myDiv" -->
+	<!-- </div> -->
 	
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -148,7 +123,18 @@
 	<script src="static/js/EATinerary.js"></script>
 	
 	
-	
-	
+<!-- <script>
+var myVar;
+
+function myFunction() {
+  myVar = setTimeout(showPage, 1500);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+</script> -->
+
 
 </body></html>
