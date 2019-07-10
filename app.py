@@ -7,9 +7,8 @@ import os
 
 # Initialise
 app = Flask(__name__)
-app.config["MONGO_URI"] = str(os.environ.get('MONGODB_URI',"mongodb://localhost:27017/EATinerary"))
+app.config["MONGO_URI"] = "mongodb://localhost:27017/EATinerary"
 mongo = PyMongo(app)
-port = int(os.environ.get("PORT", 5000))
 
 # json data
 json_path = os.path.join('data', 'yelp_dataset', 'clean', 'restaurants.json')
@@ -38,16 +37,11 @@ def home():
         return render_template("map.html", data=dumps(data))
     return render_template("EATinerary.html")
 
-# Route to fetch api key
-@app.route("/key/", methods=["POST"])
-def key():
-    return str(os.environ.get('MapboxApiKey'))
-
 # Coming soon route
 @app.route("/soon.html")
 def soon():
     return render_template("soon.html")
-
+	
 # # Chart route
 # @app.route("/chart.html")
 # def chart():
@@ -59,4 +53,4 @@ def soon():
 #     return render_template("table.html")
 
 if __name__ == "__main__": 
-    app.run(host='0.0.0.0', port=port)
+    app.run(debug= True)
