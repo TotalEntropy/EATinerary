@@ -47,10 +47,10 @@ def soon():
 # def chart():
 #     return render_template("chart.html")
 
-# # Table route
-# @app.route("/table.html")
-# def table():
-#     return render_template("table.html")
+# Table route
+@app.route("/table.html")
+def table():
+    return render_template("table.html")
 
 if __name__ == "__main__": 
     app.run(debug= True)
