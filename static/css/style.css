@@ -17,3 +17,34 @@ html {
   z-index: 400;
   padding: 10px;
 }
+
+/* .custom-popup .leaflet-popup-content-wrapper {
+  background-color: #B5D3E7;
+  color:#fff;
+  font-size:16px;
+  line-height:24px;
+  border-radius: 0px;
+  }
+.custom-popup .leaflet-popup-content-wrapper a {
+    color:rgba(255,255,255,0.1);
+  }
+.custom-popup .leaflet-popup-tip-container {
+  width:30px;
+  height:15px;
+  }
+.custom-popup .leaflet-popup-tip {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+ */
+.suggested  .leaflet-popup-content-wrapper {
+  background-color: gray;
+  opacity: .9
+}
+
+.suggested .leaflet-popup-tip {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
