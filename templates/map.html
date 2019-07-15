@@ -22,11 +22,15 @@
 </head>
 
 <body>
+
   <!-- The div for our map -->
   <div id="map"></div>
+  
+  <!-- The div for our home button -->
   <div class="controls leaflet-bar">
-  <input type="button" value="Home" onclick= "location.href = '/'" title="Back to home page" />  
+	<input type="button" value="Home" onclick= "location.href = '/'" title="Back to home page" />
   </div>
+  
 
   <!-- API key -->
   <script type="text/javascript" src="static/js/config.js"></script>
@@ -34,9 +38,25 @@
   <!-- Jinja variable from app.py -->
   <script>
     var data = JSON.parse({{ data|tojson }});
-  </script>>
+  </script>
   
   <!-- Our JS -->
   <script type="text/javascript" src="static/js/map.js"></script>
+  
+  
+<!-- Additional JS for Suggestion Box-->
+  <script>
+  var popup = L.popup({
+  closeButton: true,
+  autoClose: false,
+  keepInView: true,
+  closeOnClick: false,
+  className: 'suggested'
+})
+.setLatLng([43.7392, -79.9903])
+.setContent('<p>Top suggestions:</p>' + '<p>Restaurant Name 1:</p>' + '<p>Restaurant Name 2:</p>' + '<p>Restaurant Name 2:</p>')
+.addTo(myMap).openPopup;
+  </script>
+  
 </body>
 </html>
