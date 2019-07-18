@@ -42,10 +42,10 @@ def home():
 def soon():
     return render_template("soon.html")
 	
-# # Chart route
-# @app.route("/chart.html")
-# def chart():
-#     return render_template("chart.html")
+# index route / new home page
+@app.route("/index.html")
+def chart():
+    return render_template("index.html")
 
 # Table route
 @app.route("/table.html")
