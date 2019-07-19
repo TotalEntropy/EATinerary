@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
+/* BODY BACKGROUND*/
+ body{
+	background-image:linear-gradient(125deg, #ff4d00, #ffc100, #367588, #004242);
+	background-size:400% 400%;
+	animation: bganimation 15s infinite;
+	font-family: 'Roboto Slab', serif;
+	font-size: 18px;
+ }
+
+ /* ANIMATION FOR BACKGROUND */ 
+@keyframes bganimation {
+    0%   {background-position: 0% 50%;}
+    50%  {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* SIDE NAVIGATION*/
+.side{
+	position: absolute;
+	top: 75%;
+	transform: translateY(-50%);	
+}
+
+.side a{
+	background: #ff4d00;
+	color: white;
+	font-size: 19px;
+	display: block;
+	width: 130px; 
+	padding: 12px;
+	text-decoration: none;
+	margin: 8px 0;
+	border: 1px solid white;
+	border-radius: 6px;
+	margin-left: -100px;
+	transition: 0.6s all;	
+}
+
+.side a:hover{
+	margin-left: 0;
+}
+
+
+/* AUTO COMPLETE CITY SEARCH */
+.question1 {
+	top: 55%;
+	left: 30%;
+}
+
+/*the container must be positioned relative:*/
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+input[type=submit] {
+  background-color: #004242;
+  color: #fff;
+  cursor: pointer;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: #004242 !important; 
+  color: #ffffff; 
+}
+
+
+/* CHECK BOX*/
+
+.middle {
+	position: absolute;
+	top: 90%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.choice-list{
+	max-width: 550px;
+	padding: 40px;		
+}
+
+.choice {
+  display: flex;
+ 
+  align-items: center;
+  cursor: pointer;
+}
+
+.choice input {
+  position: absolute;
+  visibility: hidden;
+}
+
+.choice i{
+	display: inline-block;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	border: 1px solid #ddd;
+	text-align: center;
+	line-height: 48px;
+	font-size: 20px;
+	margin-right: 14px;
+	color: transparent;
+}
+
+.text {
+  font-size: 18px;
+  color: #fff;
+}
+
+.choice input:checked ~i{
+  color: #e74c3c;
+}
+
+.choice input:checked ~ .text{
+  color: #e74c3c;
+}

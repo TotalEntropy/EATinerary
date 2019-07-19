@@ -1,1 +1,0 @@
-main.ipynb is used to clean the original Yelp dataset (>3GB) and output only restaurants in Ontario in a json format (~13MB) that is a lot easier to manage

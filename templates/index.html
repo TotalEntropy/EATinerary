@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://www.flaticon.com/premium-icon/icons/svg/955/955073.svg">
+
+    <title>EATinerary</title>
+
+	<!-- Bootstrap core CSS -->
+    <!-- <link href="/static/css/bootstrap.min.css" rel="stylesheet"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	
+	<!-- Custom styles for this template -->
+	<link href="/static/css/custom1.css" rel="stylesheet">
+	<link href="/static/css/pretty.css" rel="stylesheet">
+	
+  </head>
+
+  <body onload="myFunction()" style="margin:0;">
+  <div id="loader"></div>
+  <div style="display:none;" id="myDiv" class="animate-bottom">
+  
+	
+	<!-- Side Nav Bar -->
+	<div class="side">
+		<a style="background: #ff4d00;" href="/map.html">Home</a>
+		<a style="background:#ffc100;" href="/soon.html">About</a>
+		<a style="background:#367588;" href="/soon.html">Map</a>
+		<a style="background:#004242;" href="/soon.html">Contact</a>
+		
+	</div>
+	
+	<!-- Code for new logo here -->
+	
+	<!-- Introduction -->
+    <div class="container">
+	<br>
+        <h6 style="color: black">Every culinary experience has a story and we would like to help you tell yours.</h6>
+		<br>
+        <h4 style="color: black">Let's proceed with your</h4>
+		<h1 style="color: black">EATinerary!</h1>
+		<br><br>
+    </div>		
+    </div>
+	
+	
+
+
+<div class="container-fluid">
+  <div class="row">
+	<div class="col-sm-8 question1">
+	  <h2>Where do you want to go?</h2>
+      <!--Make sure the form has the autocomplete function switched off:-->
+	  <form autocomplete="off" action="/action_page.php">
+	    <div class="autocomplete" style="width:300px;">
+	      <input id="myInput" type="text" name="myCity" placeholder="City">
+		</div>
+		<input type="submit">
+	  </form>
+    </div>
+  </div>
+
+<!--   <div class="col-sm-8 choice-list middle">
+  <h2>What are your requirements?</h2>
+  <label class="choice">One
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span>
+</label>
+<label class="choice">Two
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="choice">Three
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="choice">Four
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="choice">Five
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+ -->
+<!-- nicer design -->
+<div class="col-sm-8 choice-list middle">
+  <h2>What are your requirements?</h2>
+  <label class="choice">
+  <input type="checkbox">
+  <i class="fas fa-check"></i>
+  <span class="text">Outdoor seating</span>
+</label>
+<label class="choice">
+  <input type="checkbox">
+  <i class="fas fa-check"></i>
+  <span class="text">Wheelchair friendly</span>
+</label>
+<label class="choice">
+  <input type="checkbox">
+  <i class="fas fa-check"></i>
+  <span class="text">Kid friendly</span>
+</label>
+<label class="choice">
+  <input type="checkbox">
+  <i class="fas fa-check"></i>
+  <span class="text">Dog friendly</span>
+</label>
+<label class="choice">
+  <input type="checkbox">
+  <i class="fas fa-check"></i>
+  <span class="text">Music</span>
+</label>
+<label class="choice">
+  <input type="checkbox">
+  <i class="fas fa-check"></i>
+  <span class="text">Parking</span>
+</label>
+<label class="choice">
+  <input type="checkbox">
+  <i class="fas fa-check"></i>
+  <span class="text">Bike Parking</span>
+</label>
+
+  </div>
+  
+</div>
+  
+
+
+	
+	
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/static/css/jquery-3.2.1.slim.min.js.download" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="/static/css/popper.min.js.download"></script>
+    <script src="/static/css/bootstrap.min.js.download"></script>
+	
+	<!-- D3 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+
+	<!-- JS -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  
+	<script src="static/js/autocomplete.js"></script>
+	<script src="https://kit.fontawesome.com/7d7153cb30.js"></script>
+	
+	<!-- JS of Preloader -->
+<script>
+var myVar;
+
+function myFunction() {
+  myVar = setTimeout(showPage, 1000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+</script>
+	
+  
+</body></html>
