@@ -121,7 +121,7 @@ var dance = L.icon({
 // French
 var french = L.icon({
 	iconUrl: 'static/Images/French.svg',
-	iconSize:     [28, 45],
+	iconSize:     [38, 95],
     iconAnchor:   [22, 94],
     popupAnchor:  [-3, -76]
 });
@@ -129,11 +129,42 @@ var french = L.icon({
 // German
 var german = L.icon({
 	iconUrl: 'static/Images/German.svg',
-	iconSize:     [28, 45],
+	iconSize:     [38, 95],
     iconAnchor:   [22, 94],
     popupAnchor:  [-3, -76]
 });
 
+// Spanish
+var spanish = L.icon({
+	iconUrl: 'static/Images/Spanish.svg',
+	iconSize:     [38, 95],
+    iconAnchor:   [22, 94],
+    popupAnchor:  [-3, -76]
+});
+
+// Thai
+var thai = L.icon({
+	iconUrl: 'static/Images/Thai.svg',
+	iconSize:     [38, 95],
+    iconAnchor:   [22, 94],
+    popupAnchor:  [-3, -76]
+});
+
+// Brazilian
+var brazilian = L.icon({
+	iconUrl: 'static/Images/Brazilian.svg',
+	iconSize:     [38, 95],
+    iconAnchor:   [22, 94],
+    popupAnchor:  [-3, -76]
+});
+
+// Singaporean
+var singaporean = L.icon({
+	iconUrl: 'static/Images/Singaporean.svg',
+	iconSize:     [38, 95],
+    iconAnchor:   [22, 94],
+    popupAnchor:  [-3, -76]
+});
 
 
 // Arrays to store markers
@@ -154,6 +185,10 @@ var sportsbarMarkers = [];
 var danceMarkers = [];
 var frenchMarkers = [];
 var germanMarkers = [];
+var spanishMarkers = [];
+var thaiMarkers = [];
+var brazilianMarkers = [];
+var singaporeanMarkers = [];
 
 console.log(data);
 
@@ -221,13 +256,29 @@ for (var i = 0; i < data.length; i++) {
     danceMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: dance}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>")
     );
-  } else if (categories.includes("French")) {
+  } else if (categories.includes("french")) {
     frenchMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: french}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>")
 	);
-  } else if (categories.includes("German")) {
+  } else if (categories.includes("german")) {
     germanMarkers.push(
       L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: german}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>")
+    );
+  } else if (categories.includes("spanish")) {
+    spanishMarkers.push(
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: spanish}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>")
+    );	
+  } else if (categories.includes("thai")) {
+    thaiMarkers.push(
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: thai}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>")
+    );
+  } else if (categories.includes("brazilian")) {
+    brazilianMarkers.push(
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: brazilian}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>")
+    );	
+   } else if (categories.includes("singaporean")) {
+    singaporeanMarkers.push(
+      L.marker([(data[i].Latitude), (data[i].Longitude)],{icon: singaporean}).bindPopup("<h2>Name: " + data[i].Name + "</h2>" + "<h3>Address: " + data[i].Address + "</h3>" + "<h3>Postal Code: " + data[i]["Postal code"] + "</h3>" + "<h3>Stars: " + data[i].Stars + "</h3>")
     );
   } else {
     restaurantMarkers.push(
@@ -255,7 +306,10 @@ var sportsbarM = L.layerGroup(sportsbarMarkers);
 var danceM = L.layerGroup(danceMarkers);
 var frenchM = L.layerGroup(frenchMarkers);
 var germanM = L.layerGroup(germanMarkers);
-
+var spanishM = L.layerGroup(spanishMarkers);
+var thaiM = L.layerGroup(thaiMarkers);
+var brazilianM = L.layerGroup(brazilianMarkers);
+var singaporeanM = L.layerGroup(singaporeanMarkers);
 
 // Define variables for our tile layers
 var day = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
@@ -312,7 +366,11 @@ var overlayMaps = {
   Sportsbar: sportsbarM,
   Dance: danceM,
   French: frenchM,
-  German: germanM
+  German: germanM,
+  Spanish: spanishM,
+  Thai: thaiM,
+  Brazilian: brazilianM,
+  Singaporean: singaporeanM,
 };
 
 // Create map object and set default layers
