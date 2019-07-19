@@ -1,56 +1,46 @@
-# Import dependencies
-from flask import Flask, redirect, render_template, request
-from flask_pymongo import PyMongo
-from bson.json_util import dumps
-import json
-import os
+from flask import Flask, redirect, render_template, request, jsonify
+# import pandas as pd
+from config import conn
+from flask_sqlalchemy import SQLAlchemy
+import pymysql
+import sqlalchemy
+from sqlalchemy.ext.automap import automap_base
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine
 
-# Initialise
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb://localhost:27017/EATinerary"
-mongo = PyMongo(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{conn}/eatinerary'
+db=SQLAlchemy(app)
 
-# json data
-json_path = os.path.join('data', 'yelp_dataset', 'clean', 'restaurants.json')
-with open(json_path) as data:
-    json_data = json.load(data)
+Base=automap_base()
 
-list_data = [k for k in json_data.values()]
+Base.prepare(db.engine, reflect=True)
+restaurant=Base.classes.restaurant
+category=Base.classes.category
 
-# Setting up mongodb
-restaurants = mongo.db.restaurants
-
-# Loading the json data into mongodb
-restaurants.delete_many({})
-restaurants.insert_many(list_data, ordered=False)
-
-# Home route
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def home():
-    if request.method == "POST":
-        city = request.form["city"]
-        stars = float(request.form["stars"])
-        print('city='+city)
-        print('Stars=' + str(stars))
-        data = restaurants.find({'City Lowercase': city.lower(), 'Stars': {'$gte': stars}})
-        print('matching restaurants=' + str(data.count()))
-        return render_template("map.html", data=dumps(data))
-    return render_template("EATinerary.html")
-
-# Coming soon route
-@app.route("/soon.html")
-def soon():
-    return render_template("soon.html")
-	
-# index route / new home page
-@app.route("/index.html")
-def chart():
     return render_template("index.html")
 
-# Table route
-@app.route("/table.html")
-def table():
-    return render_template("table.html")
+@app.route("/api/restaurant")
+def restaurant():
+    return
 
-if __name__ == "__main__": 
-    app.run(debug= True)
+@app.route("/api/city")
+def city():
+    cities=db.session.query(restaurant.City).distinct(restaurant.City).all()
+
+    results= []
+
+    for row in cities:
+        results.append(row[0])
+
+    return jsonify(results)
+
+@app.route("/api/category")
+def category():
+
+    return
+
+if __name__ == "__main__":
+    app.run(debug=True)
