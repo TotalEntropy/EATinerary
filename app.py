@@ -61,30 +61,30 @@ def data():
     query_restaurant=db.session.query(*sel_restaurant)
 
     # Loop through the lists and append each row as a dictionary
-    for result in query_restaurant.all():
+    for row in query_restaurant.all():
         results_restaurant.append({
-            'Name':result[0],
-            'Address':result[1],
-            'Postal_code':result[2],
-            'City':result[3],
-            'Latitude':result[4],
-            'Longitude':result[5],
-            'Stars':result[6],
-            'Monday_open':result[7],
-            'Monday_close':result[8],
-            'Tuesday_open':result[9],
-            'Tuesday_close':result[10],
-            'Wednesday_open':result[11],
-            'Wednesday_close':result[12],
-            'Thursday_open':result[13],
-            'Thursday_close':result[14],
-            'Friday_open':result[15],
-            'Friday_close':result[16],
-            'Saturday_open':result[17],
-            'Saturday_close':result[18],
-            'Sunday_open':result[19],
-            'Sunday_close':result[20],
-            'Category_ids':result[21]
+            'Name':row[0],
+            'Address':row[1],
+            'Postal_code':row[2],
+            'City':row[3],
+            'Latitude':row[4],
+            'Longitude':row[5],
+            'Stars':row[6],
+            'Monday_open':row[7],
+            'Monday_close':row[8],
+            'Tuesday_open':row[9],
+            'Tuesday_close':row[10],
+            'Wednesday_open':row[11],
+            'Wednesday_close':row[12],
+            'Thursday_open':row[13],
+            'Thursday_close':row[14],
+            'Friday_open':row[15],
+            'Friday_close':row[16],
+            'Saturday_open':row[17],
+            'Saturday_close':row[18],
+            'Sunday_open':row[19],
+            'Sunday_close':row[20],
+            'Category_ids':row[21]
         })
 
     # Empty list to append results from the categories table to
@@ -100,10 +100,10 @@ def data():
     query_category=db.session.query(*sel_category)
 
     # Loop through the results and append each row as a dictionary
-    for result in query_category.all():
+    for row in query_category.all():
         results_category.append({
-            'Category_id':result[0],
-            'Category':result[1]
+            'Category_id':row[0],
+            'Category':row[1]
         })
 
     return jsonify(results_restaurant, results_category)
@@ -117,6 +117,22 @@ def city():
     query=db.session.query(restaurant.City).distinct(restaurant.City)
 
     for row in query.all():
+        results.append(row[0])
+
+    return jsonify(results)
+
+# API route to return a json of unique cities
+@app.route("/api/categories")
+def categories():
+
+    # Empty list to append results from the categories table to
+    results=[]
+
+    # Construct the query
+    query_category=db.session.query(category.Category)
+
+    # Loop through the results and append each row as a dictionary
+    for row in query_category.all():
         results.append(row[0])
 
     return jsonify(results)
