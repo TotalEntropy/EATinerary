@@ -5,9 +5,9 @@ In this present generation, there exists a distinct hobbyist group called foodie
 
 Although the food service industry looks promising due to increased demand, the unfortunate reality is that many restaurants fail in their first few years. A note-worthy reason for this could be lack of planning and research. 
 
-In order to help both consumers and businesses alike, we gathered Yelp’s dataset to build an interactive restaurant web application. The home page displays a form which allows the user to input city, minimum review star rating and attributes (wheel chair accessible, gender neutral washrooms, outdoor seating, good for kids, touristy, etc). Once the form is submitted, it generates a customizable map to meet the specific needs of foodies, non-foodies and businesses alike. User-input will make consumer and business research quick and easy. Filtering by category, cuisine, vegan, gluten-free and other options will prove very useful for targeting specific consumer needs and niche marketing. Afterall, no single restaurant has a universal appeal. 
+In order to help both consumers and businesses alike, we gathered Yelp’s dataset to build an interactive restaurant web application. The home page displays a form which allows the user to input city and attributes (wheelchair friendly, outdoor seating, kid friendly, dog friendly, music, parking, bike parking). Once the form is submitted, it generates a customizable map to meet the specific needs of foodies, non-foodies and businesses alike. User-input will make consumer and business research quick and easy. Filtering by category, cuisine, vegan, gluten-free and other options will prove very useful for targeting specific consumer needs and niche marketing. Afterall, no single restaurant has a universal appeal. 
 
-Inital plan was to also use machine learning to run Analysis on Yelp reviews. The goal was to use Machine learning algorithm that analyzes a review and determines if it is an outlier. However, due to time constraint, this will be done at a later time.
+Initial plan was to also use machine learning to run Analysis on Yelp reviews. The goal was to use Machine learning algorithm that analyzes a review and determines if it is an outlier. However, due to time constraint, this will be done at a later time.
 
 ### Breakdown of work:
 | Item  | Member |
