@@ -121,21 +121,21 @@ def city():
 
     return jsonify(results)
 
-# API route to return a json of unique cities
-@app.route("/api/categories")
-def categories():
+# # API route to return a json of unique cities
+# @app.route("/api/categories")
+# def categories():
 
-    # Empty list to append results from the categories table to
-    results=[]
+#     # Empty list to append results from the categories table to
+#     results=[]
 
-    # Construct the query
-    query_category=db.session.query(category.Category)
+#     # Construct the query
+#     query_category=db.session.query(category.Category)
 
-    # Loop through the results and append each row as a dictionary
-    for row in query_category.all():
-        results.append(row[0])
+#     # Loop through the results and append each row as a dictionary
+#     for row in query_category.all():
+#         results.append(row[0])
 
-    return jsonify(results)
+#     return jsonify(results)
 
 @app.route("/about")
 def about():
