@@ -1,3 +1,4 @@
+d3.json('api/city').then(function (cities) {
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
@@ -97,11 +98,11 @@ function autocomplete(inp, arr) {
 
 /*An array containing cities:*/
 // make sure that d3 is included in the html
-var cities=d3.json('api/city').then(function (data) {
+/* var cities=d3.json('api/city').then(function (data) {
   console.log(data);
   return data;
 });
-
+ */
 console.log(cities)
 
 // d3.json(chartURL).then(function (data) {
@@ -116,6 +117,7 @@ console.log(cities)
 //       colorscale: "Earth"
 //     }
 //   };
+});
 
 // var cities = ['Agincourt', 'Ajax', 'Ansnorveldt', 'Ashburn', 'Aurora', 'Beeton',
 // 'Bolton', 'Bond Head', 'Bradford', 'Brampton',
@@ -133,6 +135,7 @@ console.log(cities)
 // 'Thorncliffe Park', 'Thornhill', 'Toronto', 'Tottenham',
 // 'Unionville', 'Uxbridge', 'Vaughan', 'Waterloo',
 // 'Weston', 'Whitby', 'York', 'Yorkdale', 'Yorkville', 'Zephyr'];
+
 
 /*initiate the autocomplete function on the "myInput" element, and pass along the cities array as possible autocomplete values:*/
 autocomplete(document.getElementById("myInput"), cities);
