@@ -325,3 +325,15 @@ var myMap = L.map("map", {
 // Pass our map layers into our layer control
 // Add the layer control to the map
 L.control.layers(baseMaps, overlayMaps).addTo(myMap);
+
+
+/* var popup = L.popup({
+  closeButton: true,
+  autoClose: false,
+  keepInView: true,
+  closeOnClick: false,
+  className: 'suggested'
+})
+.setLatLng([43.7392, -79.9903])
+.setContent('<p>Top suggestions:</p>' + '<p>Restaurant Name 1:</p>' + '<p>Restaurant Name 2:</p>' + '<p>Restaurant Name 2:</p>')
+.addTo(myMap).openPopup; */
