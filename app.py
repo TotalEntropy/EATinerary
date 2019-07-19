@@ -12,9 +12,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{conn}/eatinerary'
 db=SQLAlchemy(app)
 
 Base=automap_base()
-
 Base.prepare(db.engine, reflect=True)
 
+# Prepping both tables
 restaurant=Base.classes.restaurant
 category=Base.classes.category
 
@@ -28,7 +28,11 @@ def home():
 @app.route("/api/data")
 def data():
 
-    sel=[
+    # Empty list to append results from the restaurant table to
+    results_restaurant=[]
+
+    # Select statement for all the desired columns
+    sel_restaurant=[
         restaurant.Name,
         restaurant.Address,
         restaurant.Postal_code,
@@ -53,12 +57,12 @@ def data():
         restaurant.Category_ids
     ]
 
-    results=[]
+    # Construct the desired query
+    query_restaurant=db.session.query(*sel_restaurant)
 
-    query=db.session.query(*sel)
-
-    for result in query.all():
-        results.append({
+    # Loop through the lists and append each row as a dictionary
+    for result in query_restaurant.all():
+        results_restaurant.append({
             'Name':result[0],
             'Address':result[1],
             'Postal_code':result[2],
@@ -83,11 +87,26 @@ def data():
             'Category_ids':result[21]
         })
 
-    # query=db.session.query(*category)
+    # Empty list to append results from the categories table to
+    results_category=[]
 
-    # categories=[]
+    # Select statement for all the desired columns
+    sel_category=[
+        category.Category_id,
+        category.Category
+    ]
 
-    return jsonify(results)
+    # Construct the query
+    query_category=db.session.query(*sel_category)
+
+    # Loop through the results and append each row as a dictionary
+    for result in query_category.all():
+        results_category.append({
+            'Category_id':result[0],
+            'Category':result[1]
+        })
+
+    return jsonify(results_restaurant, results_category)
 
 # API route to return a json of unique cities
 @app.route("/api/city")
