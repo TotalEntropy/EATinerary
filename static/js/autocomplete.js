@@ -1,4 +1,3 @@
-d3.json('api/city').then(function (cities) {
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
@@ -97,45 +96,9 @@ function autocomplete(inp, arr) {
 }
 
 /*An array containing cities:*/
-// make sure that d3 is included in the html
-/* var cities=d3.json('api/city').then(function (data) {
-  console.log(data);
-  return data;
-});
- */
-console.log(cities)
-
-// d3.json(chartURL).then(function (data) {
-//   var trace = {
-//     x: data.otu_ids,
-//     y: data.sample_values,
-//     mode: 'markers',
-//     text: data.otu_labels,
-//     marker: {
-//       color: data.otu_ids,
-//       size: data.sample_values,
-//       colorscale: "Earth"
-//     }
-//   };
-});
-
-// var cities = ['Agincourt', 'Ajax', 'Ansnorveldt', 'Ashburn', 'Aurora', 'Beeton',
-// 'Bolton', 'Bond Head', 'Bradford', 'Brampton',
-// 'Brooklin', 'Caledon', 'Centre Island',
-// 'Claremont', 'Clarkson', 'Concord', 'Cooksville', 'Don Mills', 'Downsview',
-// 'Durham Regional Municipality', 'East Credit', 'East Gwillimbury', 'East Hawkesbury',
-// 'East York', 'Etobicoke', 'Georgetown', 'Glen Williams', 'Goodwood', 'Gormley', 'Halton Hills',
-// 'Hamilton', 'Holland Landing', 'Inglewood', 'Kettleby', 'King', 'King City',
-// 'Kleinburg', 'Leslieville', 'Maple', 'Markham', 'Milton',
-// 'Missisauga', 'Mount Albert', 'New Tecumseth', 'Newmarket',
-// 'Nobleton', 'North York', 'Norval', 'Oak Ridges', 'Oakville', 'Oshawa',
-// 'Palgrave', 'Pickering', 'Port Credit', 'Queensville', 
-// 'Rexdale', 'Richmond Hill',
-// 'River Drive Park', 'Scarborough', 'Schomberg', 'Sharon', 'Stouffville', 'Streetsville', 
-// 'Thorncliffe Park', 'Thornhill', 'Toronto', 'Tottenham',
-// 'Unionville', 'Uxbridge', 'Vaughan', 'Waterloo',
-// 'Weston', 'Whitby', 'York', 'Yorkdale', 'Yorkville', 'Zephyr'];
-
+var cities = [
+  "Mississauga", "Toronto", "Etobicoke", "Vaughan", "Pickering", "Richmond Hill", "North York", "Scarborough", "Oakville", "Brampton","Markham", "Newmarket", "Ajax", "Thornhill", "Bolton", "Bradford", "York", "Woodbridge", "Aurora", "Whitby", "East York", "Stouffville",  "Concord", "Unionville"
+]
 
 /*initiate the autocomplete function on the "myInput" element, and pass along the cities array as possible autocomplete values:*/
 autocomplete(document.getElementById("myInput"), cities);
