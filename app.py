@@ -8,6 +8,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 
+# Set up flask and db
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{conn}/eatinerary'
 db=SQLAlchemy(app)
@@ -15,17 +16,21 @@ db=SQLAlchemy(app)
 Base=automap_base()
 
 Base.prepare(db.engine, reflect=True)
+
 restaurant=Base.classes.restaurant
 category=Base.classes.category
 
+# Home route
 @app.route("/")
 def home():
     return render_template("index.html")
 
+# API route to query restaurant data
 @app.route("/api/restaurant")
 def restaurant():
     return
 
+# API route to return a json of unique cities
 @app.route("/api/city")
 def city():
     cities=db.session.query(restaurant.City).distinct(restaurant.City).all()
@@ -37,6 +42,7 @@ def city():
 
     return jsonify(results)
 
+# API route to return a json of the unique categories with the category ID
 @app.route("/api/category")
 def category():
 
