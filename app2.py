@@ -1,5 +1,5 @@
 from flask import Flask, redirect, render_template, request, jsonify
-import pandas as pd
+# import pandas as pd
 from config import conn
 from flask_sqlalchemy import SQLAlchemy
 import pymysql
