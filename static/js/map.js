@@ -215,28 +215,28 @@ d3.json('/api/data').then(function(data) {
         attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
         maxZoom: 18,
         id: "mapbox.streets",
-        accessToken: API_KEY
+        accessToken: MapboxApiKey
       });
 
       var dark = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
         attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
         maxZoom: 18,
         id: "mapbox.dark",
-        accessToken: API_KEY
+        accessToken: MapboxApiKey
       });
 
       var satellite = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
         attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
         maxZoom: 18,
         id: "mapbox.satellite",
-        accessToken: API_KEY
+        accessToken: MapboxApiKey
       });
 
       var pirates = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
         attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
         maxZoom: 18,
         id: "mapbox.pirates",
-        accessToken: API_KEY
+        accessToken: MapboxApiKey
       });
 
       // Only one base layer can be shown at a time
@@ -251,7 +251,7 @@ d3.json('/api/data').then(function(data) {
       var myMap = L.map("map", {
         center: [43.7179997, -79.42919975],
         zoom: 10,
-        layers: [day, restaurants]
+        layers: [day]
       });
 
       // Pass our map layers into our layer control
