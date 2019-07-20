@@ -193,72 +193,22 @@ d3.json('/api/data').then(function(data) {
     console.log(category.Category);
 
     // Empty array for the markers
-    markers=[];
+    var markers=[];
 
     // Loop through every restaurant in the array of restaurants
     data[0].forEach(restaurant => {
-      console.log(restaurant);
 
       // If the category id is in the category ids column add the marker to the markers array
       if (restaurant.Category_ids.includes(category.Category_ids)) {
         markers.push(L.marker([(restaurant.Latitude),(restaurant.Longitude)],{icon: cutlery}).bindPopup("<h2>Name: " + restaurant.Name + "</h2>" + "<h3>Address: " + restaurant.Address + "</h3>" + "<h3>Postal Code: " + restaurant.Postal_code["Postal code"] + "</h3>" + "<h3>Stars: " + restaurant.Stars + "</h3>")
         )};
-
-      // Push markers to the overlay
-      overlayMaps[category.Category]=markers;
-
-      // Push the category markers to the layer groups
-      layers.push(L.layerGroup(markers));
-
-      // Define variables for our tile layers
-      var day = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-        attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-        maxZoom: 18,
-        id: "mapbox.streets",
-        accessToken: MapboxApiKey
-      });
-
-      var dark = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-        attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-        maxZoom: 18,
-        id: "mapbox.dark",
-        accessToken: MapboxApiKey
-      });
-
-      var satellite = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-        attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-        maxZoom: 18,
-        id: "mapbox.satellite",
-        accessToken: MapboxApiKey
-      });
-
-      var pirates = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-        attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-        maxZoom: 18,
-        id: "mapbox.pirates",
-        accessToken: MapboxApiKey
-      });
-
-      // Only one base layer can be shown at a time
-      var baseMaps = {
-        Day: day,
-        Night: dark,
-        Satellite: satellite,
-        Fun: pirates
-      };
-
-      // Create map object and set default layers
-      var myMap = L.map("map", {
-        center: [43.7179997, -79.42919975],
-        zoom: 10,
-        layers: [day]
-      });
-
-      // Pass our map layers into our layer control
-      // Add the layer control to the map
-      L.control.layers(baseMaps, overlayMaps).addTo(myMap);      
-
     });
+
+    // Push markers to the overlay
+    overlayMaps[category.Category]=markers;
+
+    // Push the category markers to the layer groups
+    layers.push(L.layerGroup(markers));
 
     /* var popup = L.popup({
       closeButton: true,
@@ -271,4 +221,52 @@ d3.json('/api/data').then(function(data) {
     .setContent('<p>Top suggestions:</p>' + '<p>Restaurant Name 1:</p>' + '<p>Restaurant Name 2:</p>' + '<p>Restaurant Name 2:</p>')
     .addTo(myMap).openPopup; */
   });
+
+    // Define variables for our tile layers
+  var day = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+    attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+    maxZoom: 18,
+    id: "mapbox.streets",
+    accessToken: MapboxApiKey
+  });
+
+  var dark = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+    attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+    maxZoom: 18,
+    id: "mapbox.dark",
+    accessToken: MapboxApiKey
+  });
+
+  var satellite = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+    attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+    maxZoom: 18,
+    id: "mapbox.satellite",
+    accessToken: MapboxApiKey
+  });
+
+  var pirates = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+    attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+    maxZoom: 18,
+    id: "mapbox.pirates",
+    accessToken: MapboxApiKey
+  });
+
+  // Only one base layer can be shown at a time
+  var baseMaps = {
+    Day: day,
+    Night: dark,
+    Satellite: satellite,
+    Fun: pirates
+  };
+
+  // Create map object and set default layers
+  var myMap = L.map("map", {
+    center: [43.7179997, -79.42919975],
+    zoom: 10,
+    layers: [day]
+  });
+
+  // Pass our map layers into our layer control
+  // Add the layer control to the map
+  L.control.layers(baseMaps, overlayMaps).addTo(myMap);
 });
