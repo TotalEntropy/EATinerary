@@ -202,7 +202,7 @@ d3.json('/api/data').then(function(data) {
       // If the category id is in the category ids column add the marker to the markers array
       if (restaurant.Category_ids.includes(category.Category_ids)) {
         markers.push(L.marker([(restaurant.Latitude),(restaurant.Longitude)],{icon: cutlery}).bindPopup("<h2>Name: " + restaurant.Name + "</h2>" + "<h3>Address: " + restaurant.Address + "</h3>" + "<h3>Postal Code: " + restaurant.Postal_code["Postal code"] + "</h3>" + "<h3>Stars: " + restaurant.Stars + "</h3>")
-      }
+        )};
 
       // Push markers to the overlay
       overlayMaps[category.Category]=markers;
