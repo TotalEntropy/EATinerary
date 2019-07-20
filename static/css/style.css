@@ -38,7 +38,9 @@ html {
     box-shadow: none;
   }
  */
-.suggested  .leaflet-popup-content-wrapper {
+ 
+ /*For suggestion box that we will add in the future*/
+/* .suggested  .leaflet-popup-content-wrapper {
   background-color: gray;
   opacity: .9
 }
@@ -48,3 +50,4 @@ html {
     border: none;
     box-shadow: none;
   }
+ */

@@ -16,37 +16,19 @@
     100% {background-position: 0% 50%;}
 }
 
-/* SIDE NAVIGATION*/
-.side{
-	position: absolute;
-	top: 75%;
-	transform: translateY(-50%);	
-}
-
-.side a{
-	background: #ff4d00;
-	color: white;
-	font-size: 19px;
-	display: block;
-	width: 130px; 
-	padding: 12px;
-	text-decoration: none;
-	margin: 8px 0;
-	border: 1px solid white;
-	border-radius: 6px;
-	margin-left: -100px;
-	transition: 0.6s all;	
-}
-
-.side a:hover{
-	margin-left: 0;
-}
-
+/* HORIZONTAL LINE */
+hr { 
+  height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+} 
 
 /* AUTO COMPLETE CITY SEARCH */
-.question1 {
+/* .question1 {
 	top: 55%;
-	left: 30%;
+	left: 60%;
+	transform: translate(-50%, -50%);
+ */
 }
 
 /*the container must be positioned relative:*/
@@ -106,18 +88,18 @@ input[type=submit] {
 
 /* CHECK BOX*/
 
-.middle {
+/* .middle {
 	position: absolute;
-	top: 90%;
-	left: 50%;
+	top: 100%;
+	left: 55%;
 	transform: translate(-50%, -50%);
-}
+} */
 
-.choice-list{
+/* .choice-list{
 	max-width: 550px;
 	padding: 40px;		
 }
-
+ */
 .choice {
   display: flex;
  
@@ -145,7 +127,7 @@ input[type=submit] {
 
 .text {
   font-size: 18px;
-  color: #fff;
+  color: black;
 }
 
 .choice input:checked ~i{

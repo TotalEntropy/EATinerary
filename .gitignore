@@ -110,3 +110,5 @@ config.js
 # Workspace files
 *.code-workspace
 settings.json
+app_old_heroku.py
+static/js/map._old_heroku.js
