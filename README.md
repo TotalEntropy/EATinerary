@@ -7,8 +7,6 @@ Although the food service industry looks promising due to increased demand, the 
 
 In order to help both consumers and businesses alike, we gathered Yelp’s dataset to build an interactive restaurant web application. The home page displays a form which allows the user to input city, minimum review star rating and attributes (wheel chair accessible, gender neutral washrooms, outdoor seating, good for kids, touristy, etc). Once the form is submitted, it generates a customizable map to meet the specific needs of foodies, non-foodies and businesses alike. User-input will make consumer and business research quick and easy. Filtering by category, cuisine, vegan, gluten-free and other options will prove very useful for targeting specific consumer needs and niche marketing. Afterall, no single restaurant has a universal appeal. 
 
-Machine learning will also be used to run Analysis on Yelp reviews. The goal is use Machine learning algorithm that analyzes a review and determines if it is an outlier. 
-
 ### Breakdown of work:
 | Item  | Member |
 | ------------- | ------------- |
@@ -17,8 +15,7 @@ Machine learning will also be used to run Analysis on Yelp reviews. The goal is 
 | One page REST design | Brian and Gatus |
 | Breakdown the querying based on different filtering for a better user experience | Gatus with some assistance from Brian |
 | Cleaning up existing code for speed and better error handling | Brian |
-| Machine analyzes the string and compares in an algorithm | Brian and Gatus|
+
 
 ### End result
 A more user-friendly, more indepth and more helpful interactive map.
-Machine learning algorithm that analyzes a review and determines if it is an outlier. 
