@@ -7,15 +7,16 @@ Although the food service industry looks promising due to increased demand, the 
 
 In order to help both consumers and businesses alike, we gathered Yelp’s dataset to build an interactive restaurant web application. The home page displays a form which allows the user to input city and attributes (wheelchair friendly, outdoor seating, kid friendly, dog friendly, music, parking, bike parking). Once the form is submitted, it generates a customizable map to meet the specific needs of foodies, non-foodies and businesses alike. User-input will make consumer and business research quick and easy. Filtering by category, cuisine, vegan, gluten-free and other options will prove very useful for targeting specific consumer needs and niche marketing. Afterall, no single restaurant has a universal appeal. 
 
-### Breakdown of work:
-| Item  | Member |
-| ------------- | ------------- |
-| Data cleaning on some spelling mistakes on the data  | Francesca  |
-| Switch to postgress SQL and SQLAlchemy  | Brian  |
-| One page REST design | Brian and Francesca |
-| Breakdown the querying based different filtering for a better user experience | Francesca with some assistance from Brian |
-| Cleaning up existing code for speed and better error handling | Brian |
+## Requirements
+1. Python 3.6.8
+2. pip
+3. SQLAlchemy==1.3.5
+4. Flask_SQLAlchemy==2.4.0
+5. PyMySQL==0.9.3
+6. Flask==1.1.1
+7. simplejson==3.16.0
 
-
-### End result
-A more user-friendly, more indepth and more helpful interactive map.
+## Steps
+1. Ensure you have run the [ETL process](https://github.com/TotalEntropy/Eatinerary-ETL.git)/
+2. Create a config.py in the [Eatinerary-ETL folder](https://github.com/TotalEntropy/Eatinerary-ETL) and include ```conn=user:pass@host```
+3. Run app.py
