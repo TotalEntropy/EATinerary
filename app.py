@@ -25,8 +25,8 @@ def home():
 
 # API route to query restaurant data
 ## todo allow d3.json to pass variables in the api route
-@app.route("/api/data")
-def data():
+@app.route("/api/<city>/<attributes>")
+def data(city='', attributes=[]):
 
     # Empty list to append results from the restaurant table to
     results_restaurant=[]
@@ -58,7 +58,7 @@ def data():
     ]
 
     # Construct the desired query
-    query_restaurant=db.session.query(*sel_restaurant)
+    query_restaurant=db.session.query(*sel_restaurant).filter(restaurant.City==city)
 
     # Loop through the lists and append each row as a dictionary
     for row in query_restaurant.all():
@@ -106,11 +106,11 @@ def data():
             'Category':row[1]
         })
 
-    return jsonify(results_restaurant, results_category)
+    return jsonify(results_restaurant), jsonify(results_category)
 
 # API route to return a json of unique cities
-@app.route("/api/city")
-def city():
+@app.route("/api/cityList")
+def cityList():
 
     results= []
 
@@ -120,22 +120,6 @@ def city():
         results.append(row[0])
 
     return jsonify(results)
-
-# # API route to return a json of unique cities
-# @app.route("/api/categories")
-# def categories():
-
-#     # Empty list to append results from the categories table to
-#     results=[]
-
-#     # Construct the query
-#     query_category=db.session.query(category.Category)
-
-#     # Loop through the results and append each row as a dictionary
-#     for row in query_category.all():
-#         results.append(row[0])
-
-#     return jsonify(results)
 
 @app.route("/about")
 def about():
