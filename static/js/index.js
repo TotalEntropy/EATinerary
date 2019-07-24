@@ -33,6 +33,10 @@ submitBtn.on('click', () => {
   attributes=JSON.stringify(attributes);
 
   d3.json('/api/'+city+'/'+attributes).then(function(data) {
+
     console.log(data);
+
+    // Run map function to create the map found in map.js
+    createMap(data);
   });
 });
