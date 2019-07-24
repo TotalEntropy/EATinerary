@@ -1,4 +1,4 @@
-d3.json('/api/city').then(function(cities) {
+d3.json('/api/cityList').then(function(cities) {
   console.log(cities);
 
   function autocomplete(inp, arr) {
