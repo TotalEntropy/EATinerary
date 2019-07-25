@@ -13,11 +13,11 @@ submitBtn.on('click', () => {
 
   // Store the user's current time and pass it to the server
   var date=new Date();
-  var time = {
+  var clientTime = {
     h:date.getHours(),
     m:date.getMinutes()
   };
-  console.log(time);
+  console.log(clientTime);
 
   // Empty array to store the attributes values in
   var attributes=[];
@@ -37,10 +37,10 @@ submitBtn.on('click', () => {
   console.log(attributes);
 
   // Convert the objects for the server
-  time=JSON.stringify(time);
+  clientTime=JSON.stringify(clientTime);
   attributes=JSON.stringify(attributes);
 
-  d3.json('/api/'+city+'/'+time+'/'+attributes).then(function(data) {
+  d3.json('/api/'+city+'/'+clientTime+'/'+attributes).then(function(data) {
 
     if (data.length>0) {
 
