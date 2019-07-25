@@ -12,7 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{conn}/eatinerary'
 db=SQLAlchemy(app)
 
 Base=automap_base()
-Base.prepare(db.engine, reflect=True)
+Base.prepare(db.engine, reflect = True)
 
 # Prepping both tables
 restaurant=Base.classes.restaurant
@@ -25,24 +25,60 @@ def home():
 
 # API route to query restaurant data
 ## todo allow d3.json to pass variables in the api route
-@app.route("/api/<city>/<time>/<attributes>", methods=['GET'])
-def data(city='', time='0', attributes=[]):
+@app.route("/api/<city>/<clientTime>/<attributes>", methods = ['GET'])
+def data(city='', clientTime='0', attributes=[]):
 
-    time=json.loads(time)
-    attributes=json.loads(attributes)
+    # Convert from JSON stringify
+    clientTime = json.loads(clientTime)
+    attributes = json.loads(attributes)
 
     # Print the values received in console
-    print(city)
-    print(time)
+    print(f'City: {city}')
 
-    # If the user checked the checkbox apply the filter to the initial query
+    # Convert the day to a string and print the value
+    if clientTime.get('day') == 0:
+        day = 'Sunday'
+        print(f"Day: {day}")
+
+    elif clientTime.get('day') == 1:
+        day = 'Monday'
+        print(f"Day: {day}")
+
+    elif clientTime.get('day') == 2:
+        day = 'Tuesday'
+        print(f"Day: {day}")
+
+    elif clientTime.get('day') == 3:
+        day = 'Wednesday'
+        print(f"Day: {day}")
+        
+    elif clientTime.get('day') == 4:
+        day = 'Thursday'
+        print(f"Day: {day}")
+
+    elif clientTime.get('day') == 5:
+        day = 'Friday'
+        print(f"Day: {day}")
+        
+    elif clientTime.get('day') == 6:
+        day = 'Saturday'
+        print(f"Day: {day}")
+
+    print(f"Time: {clientTime.get('h')}:{clientTime.get('m')}")
+
+    # Convert clientTime to minutes
+    clientTimeM = clientTime.get('h')*60 + clientTime.get('m')
+    print(f'Time in minutes: {clientTimeM}')
+
+    # If the user checked the checkbox
+    # apply the filter to the initial query
     for attribute in attributes:
-        if attribute.get('value')==True:
-            column=attribute.get('name')
-            print(column)
+        if attribute.get('value') == True:
+            column = attribute.get('name')
+            print(f'{column}: True')
 
     # Select statement for all the desired columns
-    sel_restaurant=[
+    sel_restaurant = [
         restaurant.Name,
         restaurant.Address,
         restaurant.Postal_code,
@@ -68,19 +104,22 @@ def data(city='', time='0', attributes=[]):
     ]
 
     # Construct the initial query
-    query=db.session.query(*sel_restaurant).filter(restaurant.City==city)
+    query = db.session.query(*sel_restaurant).filter(restaurant.City == city) \
+        .filter(getattr(restaurant, f'{day}_open') <= clientTimeM) \
+        .filter(getattr(restaurant, f'{day}_close') >= clientTimeM)
 
-    # If the user checked the checkbox apply the filter to the initial query
     for attribute in attributes:
-        if attribute.get('value')==True:
+        # If the user checked the checkbox apply the filter
+        # to the initial query
+        if attribute.get('value') == True:
             column=attribute.get('name')
-            query=query.filter(getattr(restaurant,column)==True)
+            query=query.filter(getattr(restaurant,column) == True)
 
     # Empty list to append results from the restaurant table to
-    map_latLong=[]
+    map_latLong = []
 
-    # Perform the query loop through the lists and append each row as a dictionary
     for row in query.all():
+        # Append each row in the result as a dictionary
         map_latLong.append({
             'Name':row[0],
             # 'Address':row[1],
@@ -131,7 +170,7 @@ def data(city='', time='0', attributes=[]):
 @app.route("/api/cityList", methods=['GET'])
 def cityList():
 
-    results= []
+    results = []
 
     query=db.session.query(restaurant.City).distinct(restaurant.City)
 

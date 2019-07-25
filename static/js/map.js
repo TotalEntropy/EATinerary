@@ -2,13 +2,13 @@
 var createMap = (data) => {
   
   console.log(data);
-  markers=[];
+  markers = [];
 
   const cutlery = L.icon({
     iconUrl: 'static/Images/cutlery.svg',
-    iconSize:     [45, 95],
-    iconAnchor:   [22, 94],
-    popupAnchor:  [-3, -76]
+    iconSize: [45, 95],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76]
   });
 
   // Push the markers to the marker arrays
