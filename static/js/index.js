@@ -34,7 +34,19 @@ submitBtn.on('click', () => {
 
   d3.json('/api/'+city+'/'+attributes).then(function(data) {
 
-    // Run map function to create the map found in map.js
-    createMap(data);
+    if (data.length>0) {
+
+      // Run map function to create the map found in map.js
+      createMap(data);
+
+      // TODO add autoscroll
+      
+    } else {
+
+      // TODO add logic to pick next closest results
+
+      console.log("Sorry no results were found :(")
+      window.alert("Sorry no results were found :(");
+    }
   });
 });
