@@ -28,94 +28,81 @@ def home():
 @app.route("/api/<city>/<attributes>")
 def data(city='', attributes=[]):
 
-    # param=[json.loads(row) for row in attributes]
-
     attributes=json.loads(attributes)
+
     # Print the values received in console
     print(city)
-    print(attributes)
 
-        # Empty list to append results from the restaurant table to
-    restaurant_latLong=[]
+    # If the user checked the checkbox apply the filter to the initial query
+    for attribute in attributes:
+        if attribute.get('value')==True:
+            column=attribute.get('name')
+            print(column)
 
     # Select statement for all the desired columns
-    sel_restaurant_latLong=[
-        restaurant.Restaurant_id,
+    sel_restaurant=[
+        restaurant.Name,
+        restaurant.Address,
+        restaurant.Postal_code,
+        restaurant.City,
         restaurant.Latitude,
         restaurant.Longitude,
+        restaurant.Stars,
+        restaurant.Monday_open,
+        restaurant.Monday_close,
+        restaurant.Tuesday_open,
+        restaurant.Tuesday_close,
+        restaurant.Wednesday_open,
+        restaurant.Wednesday_close,
+        restaurant.Thursday_open,
+        restaurant.Thursday_close,
+        restaurant.Friday_open,
+        restaurant.Friday_close,
+        restaurant.Saturday_open,
+        restaurant.Saturday_close,
+        restaurant.Sunday_open,
+        restaurant.Sunday_close,
         restaurant.Category_ids
     ]
 
-    # Construct the desired query
-    query_restaurant_latLong=db.session.query(*sel_restaurant_latLong).filter(restaurant.City==city)
+    # Construct the initial query
+    query=db.session.query(*sel_restaurant).filter(restaurant.City==city)
 
-    # Loop through the lists and append each row as a dictionary
-    for row in query_restaurant_latLong.all():
-        restaurant_latLong.append({
-            'Restaurant_id':row[0],
-            'Latitude':row[1],
-            'Longitude':row[2],
-            'Category_ids':row[3]
+    # If the user checked the checkbox apply the filter to the initial query
+    for attribute in attributes:
+        if attribute.get('value')==True:
+            column=attribute.get('name')
+            query=query.filter(getattr(restaurant,column)==True)
+
+    # Empty list to append results from the restaurant table to
+    map_latLong=[]
+
+    # Perform the query loop through the lists and append each row as a dictionary
+    for row in query.all():
+        map_latLong.append({
+            'Name':row[0],
+            # 'Address':row[1],
+            # 'Postal_code':row[2],
+            # 'City':row[3],
+            'Latitude':row[4],
+            'Longitude':row[5],
+            # 'Stars':row[6],
+            # 'Monday_open':row[7],
+            # 'Monday_close':row[8],
+            # 'Tuesday_open':row[9],
+            # 'Tuesday_close':row[10],
+            # 'Wednesday_open':row[11],
+            # 'Wednesday_close':row[12],
+            # 'Thursday_open':row[13],
+            # 'Thursday_close':row[14],
+            # 'Friday_open':row[15],
+            # 'Friday_close':row[16],
+            # 'Saturday_open':row[17],
+            # 'Saturday_close':row[18],
+            # 'Sunday_open':row[19],
+            # 'Sunday_close':row[20],
+            'Category_ids':row[21]
         })
-
-    # # Empty list to append results from the restaurant table to
-    # results_restaurant=[]
-
-    # # Select statement for all the desired columns
-    # sel_restaurant=[
-    #     restaurant.Name,
-    #     restaurant.Address,
-    #     restaurant.Postal_code,
-    #     restaurant.City,
-    #     restaurant.Latitude,
-    #     restaurant.Longitude,
-    #     restaurant.Stars,
-    #     restaurant.Monday_open,
-    #     restaurant.Monday_close,
-    #     restaurant.Tuesday_open,
-    #     restaurant.Tuesday_close,
-    #     restaurant.Wednesday_open,
-    #     restaurant.Wednesday_close,
-    #     restaurant.Thursday_open,
-    #     restaurant.Thursday_close,
-    #     restaurant.Friday_open,
-    #     restaurant.Friday_close,
-    #     restaurant.Saturday_open,
-    #     restaurant.Saturday_close,
-    #     restaurant.Sunday_open,
-    #     restaurant.Sunday_close,
-    #     restaurant.Category_ids
-    # ]
-
-    # # Construct the desired query
-    # query_restaurant=db.session.query(*sel_restaurant).filter(restaurant.City==city)
-
-    # # Loop through the lists and append each row as a dictionary
-    # for row in query_restaurant.all():
-    #     results_restaurant.append({
-    #         'Name':row[0],
-    #         'Address':row[1],
-    #         'Postal_code':row[2],
-    #         'City':row[3],
-    #         'Latitude':row[4],
-    #         'Longitude':row[5],
-    #         'Stars':row[6],
-    #         'Monday_open':row[7],
-    #         'Monday_close':row[8],
-    #         'Tuesday_open':row[9],
-    #         'Tuesday_close':row[10],
-    #         'Wednesday_open':row[11],
-    #         'Wednesday_close':row[12],
-    #         'Thursday_open':row[13],
-    #         'Thursday_close':row[14],
-    #         'Friday_open':row[15],
-    #         'Friday_close':row[16],
-    #         'Saturday_open':row[17],
-    #         'Saturday_close':row[18],
-    #         'Sunday_open':row[19],
-    #         'Sunday_close':row[20],
-    #         'Category_ids':row[21]
-    #     })
 
     # # Empty list to append results from the categories table to
     # results_category=[]
@@ -136,7 +123,7 @@ def data(city='', attributes=[]):
     #         'Category':row[1]
     #     })
 
-    return jsonify(restaurant_latLong)
+    return jsonify(map_latLong)
 
 # API route to return a json of unique cities
 @app.route("/api/cityList")
