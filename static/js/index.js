@@ -22,7 +22,7 @@ submitBtn.on('click', () => {
     cb=d3.select(this).select('input').property('checked');
 
     // Select the text of the checkbox
-    text=d3.select(this).select('.text').text();
+    text=d3.select(this).select('input').property('value');
 
     attributes.push({name:text, value:cb});
   });
