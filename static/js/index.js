@@ -9,11 +9,18 @@ submitBtn.on('click', () => {
 
   // Store the value placed in city
   var city=cityField.property('value').trim().toLowerCase();
+  console.log(city);
+
+  // Store the user's current time and pass it to the server
+  var date=new Date();
+  var time = {
+    h:date.getHours(),
+    m:date.getMinutes()
+  };
+  console.log(time);
 
   // Empty array to store the attributes values in
   var attributes=[];
-
-  console.log(city);
 
   // Loop through all the checkboxes
   d3.selectAll('.choice').each(function(d) {
@@ -29,10 +36,11 @@ submitBtn.on('click', () => {
 
   console.log(attributes);
 
-  // Convert the list for server
+  // Convert the objects for the server
+  time=JSON.stringify(time);
   attributes=JSON.stringify(attributes);
 
-  d3.json('/api/'+city+'/'+attributes).then(function(data) {
+  d3.json('/api/'+city+'/'+time+'/'+attributes).then(function(data) {
 
     if (data.length>0) {
 

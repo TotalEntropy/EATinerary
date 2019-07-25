@@ -25,13 +25,15 @@ def home():
 
 # API route to query restaurant data
 ## todo allow d3.json to pass variables in the api route
-@app.route("/api/<city>/<attributes>")
-def data(city='', attributes=[]):
+@app.route("/api/<city>/<time>/<attributes>", methods=['GET'])
+def data(city='', time='0', attributes=[]):
 
+    time=json.loads(time)
     attributes=json.loads(attributes)
 
     # Print the values received in console
     print(city)
+    print(time)
 
     # If the user checked the checkbox apply the filter to the initial query
     for attribute in attributes:
@@ -126,7 +128,7 @@ def data(city='', attributes=[]):
     return jsonify(map_latLong)
 
 # API route to return a json of unique cities
-@app.route("/api/cityList")
+@app.route("/api/cityList", methods=['GET'])
 def cityList():
 
     results= []
