@@ -23,7 +23,8 @@ var createMap = (data) => {
 
     // Construct the popup data
     popup = '<b>Name: </b>' + row.Name + '<br>'
-            + '<b>Address: </b>' + row.Address + '<br>';
+            + '<b>Address: </b>' + row.Address + '<br>'
+            + row.Stars + ' Stars';
 
     // Bind the marker and popup data
     markers.push(L.marker(marker).bindPopup(popup));

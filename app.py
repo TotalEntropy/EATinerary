@@ -136,7 +136,7 @@ def data(city='', clientTime='0', attributes=[]):
             # 'City':row[3],
             'Latitude':row[4],
             'Longitude':row[5],
-            # 'Stars':row[6],
+            'Stars':row[6],
             # 'Monday_open':row[7],
             # 'Monday_close':row[8],
             # 'Tuesday_open':row[9],
