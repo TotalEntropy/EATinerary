@@ -132,11 +132,8 @@ def data(city='', clientTime='0', attributes=[]):
 
     # Empty list to append results from the restaurant table to
     map_data = []
-    
-    # Variables to store the average of the latitude and longitude to center
-    #  the map when creating it in map.js
-    latitude_avg = 0
-    longitude_avg = 0
+    latitudes = []
+    longitudes = []
 
     for row in query_restaurant.all():
         # Append each row in the result as a dictionary
@@ -165,16 +162,15 @@ def data(city='', clientTime='0', attributes=[]):
             'Category_ids':row[21]
         })
 
-        # Calculating the sum of the latitude and longitude
-        latitude_avg = latitude_avg + row[4]
-        longitude_avg = longitude_avg + row[5]
+        latitudes.append(row[4])
+        longitudes.append(row[5])
 
-    # Taking the average of the latitude
-    latitude_avg = latitude_avg/len(query_restaurant.all())
-    longitude_avg = longitude_avg/len(query_restaurant.all())
+    # Calculating the center of the map for map.js
+    latitude_avg = (max(latitudes) + min(latitudes))/2
+    longitude_avg = (max(longitudes) + min(longitudes))/2
     print(f'Lat: {latitude_avg}')
     print(f'Long: {longitude_avg}')
-    
+
     # Empty list to append results from the categories table to
     map_categories=[]
 
