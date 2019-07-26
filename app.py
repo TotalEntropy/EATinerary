@@ -36,44 +36,44 @@ def data(city='', clientTime='0', attributes=[]):
     print(f'City: {city}')
 
     # Convert the day to a string and print the value
-    if clientTime.get('day') == 0:
+    if clientTime['day'] == 0:
         day = 'Sunday'
         print(f"Day: {day}")
 
-    elif clientTime.get('day') == 1:
+    elif clientTime['day'] == 1:
         day = 'Monday'
         print(f"Day: {day}")
 
-    elif clientTime.get('day') == 2:
+    elif clientTime['day'] == 2:
         day = 'Tuesday'
         print(f"Day: {day}")
 
-    elif clientTime.get('day') == 3:
+    elif clientTime['day'] == 3:
         day = 'Wednesday'
         print(f"Day: {day}")
         
-    elif clientTime.get('day') == 4:
+    elif clientTime['day'] == 4:
         day = 'Thursday'
         print(f"Day: {day}")
 
-    elif clientTime.get('day') == 5:
+    elif clientTime['day'] == 5:
         day = 'Friday'
         print(f"Day: {day}")
         
-    elif clientTime.get('day') == 6:
+    elif clientTime['day'] == 6:
         day = 'Saturday'
         print(f"Day: {day}")
 
-    print(f"Time: {clientTime.get('h')}:{clientTime.get('m')}")
+    print(f"Time: {clientTime['h']}:{clientTime['m']}")
 
     # Convert clientTime to minutes
-    clientTimeM = clientTime.get('h')*60 + clientTime.get('m')
+    clientTimeM = clientTime['h']*60 + clientTime['m']
     print(f'Time in minutes: {clientTimeM}')
 
     # If the user checked the checkbox apply the filter to the initial query
     for attribute in attributes:
-        if attribute.get('value') == True:
-            column = attribute.get('name')
+        if attribute['value'] == True:
+            column = attribute['name']
             print(f'{column}: True')
 
     # Select statement for all the desired columns
@@ -108,9 +108,9 @@ def data(city='', clientTime='0', attributes=[]):
 
 
     for attribute in attributes:
-        if attribute.get('name') == 'OpenNow':
+        if attribute['name'] == 'OpenNow':
             # If the row represents the openNow checkbox
-            if attribute.get('value') == True:
+            if attribute['value'] == True:
                 # If the user only wants restaurants that are currently open
                 #
                 # Check that the client time is within the closing and
@@ -122,12 +122,12 @@ def data(city='', clientTime='0', attributes=[]):
                     .filter(getattr(restaurant, f'{day}_close') \
                         >= clientTimeM)
         else:
-            if attribute.get('value') == True:
+            if attribute['value'] == True:
                 # If the user checked the checkbox get the column name from
                 # the name key and only select restaurants that have a true
                 #  value in that column
-                column=attribute.get('name')
-                query_restaurant=query_restaurant \
+                column = attribute['name']
+                query_restaurant = query_restaurant \
                     .filter(getattr(restaurant,column) == True)
 
     # Empty list to append results from the restaurant table to
@@ -180,7 +180,8 @@ def data(city='', clientTime='0', attributes=[]):
     # Construct the query
     query_category=db.session.query(*sel_category)
 
-    # Convert the list of queries to a dictionary 
+    # Convert the list of queries to a dictionary with the key as the category
+    #  and the value as the category name
     map_categories = {row[0] : row[1] for row in query_category.all()}
 
     # Return two JSON separate objects
