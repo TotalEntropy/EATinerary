@@ -132,6 +132,11 @@ def data(city='', clientTime='0', attributes=[]):
 
     # Empty list to append results from the restaurant table to
     map_data = []
+    
+    # Variables to store the average of the latitude and longitude to center
+    #  the map when creating it in map.js
+    latitude_avg = 0
+    longitude_avg = 0
 
     for row in query_restaurant.all():
         # Append each row in the result as a dictionary
@@ -160,6 +165,16 @@ def data(city='', clientTime='0', attributes=[]):
             'Category_ids':row[21]
         })
 
+        # Calculating the sum of the latitude and longitude
+        latitude_avg = latitude_avg + row[4]
+        longitude_avg = longitude_avg + row[5]
+
+    # Taking the average of the latitude
+    latitude_avg = latitude_avg/len(query_restaurant.all())
+    longitude_avg = longitude_avg/len(query_restaurant.all())
+    print(f'Lat: {latitude_avg}')
+    print(f'Long: {longitude_avg}')
+    
     # Empty list to append results from the categories table to
     map_categories=[]
 
@@ -180,7 +195,12 @@ def data(city='', clientTime='0', attributes=[]):
         })
 
     # Return two JSON separate objects
-    return jsonify(map_data=map_data, map_categories=map_categories) 
+    return jsonify(
+        map_data=map_data,
+        map_categories=map_categories,
+        latitude_avg=latitude_avg,
+        longitude_avg=longitude_avg
+        ) 
 
 #############################################
 # API route to return a json of unique cities

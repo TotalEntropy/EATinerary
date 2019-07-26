@@ -12,8 +12,12 @@ var createMap = (data) => {
   // Separate the map data and catagories
   var map_data = data.map_data;
   var map_categories = data.map_categories;
+  var latitude_avg = data.latitude_avg;
+  var longitude_avg = data.longitude_avg;
   console.log(map_data);
   console.log(map_categories);
+  console.log(latitude_avg);
+  console.log(longitude_avg);
 
   // Create empty array to later store the markers 
   var markers = [];
@@ -60,7 +64,7 @@ var createMap = (data) => {
 
   // Create map object and set defaults
   var myMap = L.map('map', {
-    center: [43.7179997, -79.4178587],
+    center: [latitude_avg, longitude_avg],
     zoom: 12,
     layers: [day, restaurants]
   });
