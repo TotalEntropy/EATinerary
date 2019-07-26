@@ -59,14 +59,11 @@ submitBtn.on('click', () => {
         // TODO add logic to pick next closest results
 
         // Let the user know no values were found
-        console.log(
-                    'Sorry no results were found in that city with those'
-                    + 'restrictions :('
-                   );
-        window.alert(
-                    'Sorry no results were found in that city with those'
-                    + 'restrictions :('
-                    );
+        console.log('Sorry no results were found in that city with those'
+                    + 'restrictions :(');
+
+        window.alert('Sorry no results were found in that city with those'
+                    + 'restrictions :(');
       }
     });
   } else {

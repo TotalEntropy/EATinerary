@@ -114,9 +114,9 @@ def data(city='', clientTime='0', attributes=[]):
         if attribute.get('name') == 'OpenNow':
             if attribute.get('value') == True:
                 query=query.filter(getattr(restaurant, f'{day}_open')
-                    <= clientTimeM) \
-                    .filter(getattr(restaurant, f'{day}_close') \
-                    >= clientTimeM)
+                                <= clientTimeM) \
+                           .filter(getattr(restaurant, f'{day}_close') \
+                                >= clientTimeM)
         else:
             # If the user checked the checkbox apply the filter
             # to the initial query
@@ -179,20 +179,25 @@ def data(city='', clientTime='0', attributes=[]):
 @app.route("/api/cityList", methods=['GET'])
 def cityList():
 
+    # Empty list to store the results in
     results = []
 
+    # Query for all the unique cities
     query=db.session.query(restaurant.City).distinct(restaurant.City)
 
+    # Append results to the empty list
     for row in query.all():
         results.append(row[0])
 
+    # Return the results as JSON
     return jsonify(results)
 
+# Route to display information about the app
 @app.route("/about")
 def about():
    return render_template("about.html")
 
-# Contact route
+# Contact information route
 @app.route("/contact")
 def contact():
    return render_template("contact.html")
