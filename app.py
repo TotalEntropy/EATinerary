@@ -104,16 +104,25 @@ def data(city='', clientTime='0', attributes=[]):
     ]
 
     # Construct the initial query
-    query = db.session.query(*sel_restaurant).filter(restaurant.City == city) \
-        .filter(getattr(restaurant, f'{day}_open') <= clientTimeM) \
-        .filter(getattr(restaurant, f'{day}_close') >= clientTimeM)
+    query = db.session.query(*sel_restaurant).filter(restaurant.City == city)
+
+    # If the user only wants restaurants that are currently open
 
     for attribute in attributes:
-        # If the user checked the checkbox apply the filter
-        # to the initial query
-        if attribute.get('value') == True:
-            column=attribute.get('name')
-            query=query.filter(getattr(restaurant,column) == True)
+        # If the user cares about the time only show restaurants that are
+        # currently open
+        if attribute.get('name') == 'OpenNow':
+            if attribute.get('value') == True:
+                query=query.filter(getattr(restaurant, f'{day}_open')
+                    <= clientTimeM) \
+                    .filter(getattr(restaurant, f'{day}_close') \
+                    >= clientTimeM)
+        else:
+            # If the user checked the checkbox apply the filter
+            # to the initial query
+            if attribute.get('value') == True:
+                column=attribute.get('name')
+                query=query.filter(getattr(restaurant,column) == True)
 
     # Empty list to append results from the restaurant table to
     map_latLong = []
