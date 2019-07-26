@@ -33,7 +33,18 @@ var createMap = (data) => {
     // Construct the popup data
     var popup = '<b>Name: </b>' + row.Name + '<br>'
                 + '<b>Address: </b>' + row.Address + '<br>'
-                + '<b>Stars: </b>' + row.Stars + '<br>';
+                + '<b>Stars: </b>' + row.Stars + '<br>'
+                + '<b>Categories: </b>';
+
+    // Adding all the categories to the popup
+    for (var i = 0; i < row.Categories.length; i++) {
+      popup = popup + row.Categories[i];
+      
+      if (i + 1 < row.Categories.length) {
+        // If we are not adding the last category space it with a comma
+        popup = popup + ', ';
+      }
+    }
 
     // Bind the marker and popup data
     markers.push(L.marker(marker).bindPopup(popup));
