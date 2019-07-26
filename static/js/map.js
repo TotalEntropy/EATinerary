@@ -1,15 +1,15 @@
+// Icons for the map
+const cutlery = L.icon({
+  iconUrl: 'static/Images/cutlery.svg',
+  iconSize: [45, 95],
+  iconAnchor: [22, 94],
+  popupAnchor: [-3, -76]
+
 // Function to populate the map with markers
 var createMap = (data) => {
   
   console.log(data);
   markers = [];
-
-  const cutlery = L.icon({
-    iconUrl: 'static/Images/cutlery.svg',
-    iconSize: [45, 95],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76]
-  });
 
   // Push the markers to the marker arrays
   data.forEach(row => {
@@ -24,7 +24,7 @@ var createMap = (data) => {
     // Construct the popup data
     popup = '<b>Name: </b>' + row.Name + '<br>'
             + '<b>Address: </b>' + row.Address + '<br>'
-            + row.Stars + ' Stars';
+            + '<b>Stars: </b>' + row.Stars;
 
     // Bind the marker and popup data
     markers.push(L.marker(marker).bindPopup(popup));
