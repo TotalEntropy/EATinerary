@@ -49,7 +49,7 @@ submitBtn.on('click', () => {
       // Check if there were any results found
       if (data.length > 0) {
 
-        // Run map function to create the map found in map.js
+        // Run the createMap function to create the map found in map.js
         createMap(data);
 
         // TODO add autoscroll
