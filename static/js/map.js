@@ -4,27 +4,28 @@ const cutlery = L.icon({
   iconSize: [45, 95],
   iconAnchor: [22, 94],
   popupAnchor: [-3, -76]
+});
 
 // Function to populate the map with markers
 var createMap = (data) => {
   
   console.log(data);
-  markers = [];
+  var markers = [];
 
   // Push the markers to the marker arrays
   data.forEach(row => {
 
     // Construct the marker data
-    marker = [
+    var marker = [
              row.Latitude,
              row.Longitude,
              {icon: cutlery}
              ]
 
     // Construct the popup data
-    popup = '<b>Name: </b>' + row.Name + '<br>'
-            + '<b>Address: </b>' + row.Address + '<br>'
-            + '<b>Stars: </b>' + row.Stars;
+    var popup = '<b>Name: </b>' + row.Name + '<br>'
+                + '<b>Address: </b>' + row.Address + '<br>'
+                + '<b>Stars: </b>' + row.Stars + '<br>';
 
     // Bind the marker and popup data
     markers.push(L.marker(marker).bindPopup(popup));
