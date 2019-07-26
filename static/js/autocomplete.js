@@ -1,4 +1,4 @@
-const unique_cities = []
+var unique_cities = []
 
 d3.json('/api/cityList').then(function(d) {
   unique_cities = d;
