@@ -131,7 +131,7 @@ def data(city='', clientTime='0', attributes=[]):
         # Append each row in the result as a dictionary
         map_latLong.append({
             'Name':row[0],
-            # 'Address':row[1],
+            'Address':row[1],
             # 'Postal_code':row[2],
             # 'City':row[3],
             'Latitude':row[4],

@@ -13,7 +13,20 @@ var createMap = (data) => {
 
   // Push the markers to the marker arrays
   data.forEach(row => {
-    markers.push(L.marker([row.Latitude, row.Longitude, {icon: cutlery}]));
+
+    // Construct the marker data
+    marker = [
+             row.Latitude,
+             row.Longitude,
+             {icon: cutlery}
+             ]
+
+    // Construct the popup data
+    popup = '<b>Name: </b>' + row.Name + '<br>'
+            + '<b>Address: </b>' + row.Address + '<br>';
+
+    // Bind the marker and popup data
+    markers.push(L.marker(marker).bindPopup(popup));
   });
 
   // Create layer group of the markers
