@@ -1,5 +1,8 @@
-d3.json('/api/cityList').then(function(cities) {
-  console.log(cities);
+unique_cities = []
+
+d3.json('/api/cityList').then(function(d) {
+  unique_cities = d;
+  console.log(unique_cities);
 
   function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,
@@ -99,5 +102,5 @@ d3.json('/api/cityList').then(function(cities) {
   }
 
   /*initiate the autocomplete function on the "myInput" element, and pass along the cities array as possible autocomplete values:*/
-  autocomplete(document.getElementById("myInput"), cities);
+  autocomplete(document.getElementById("myInput"), unique_cities);
 });
