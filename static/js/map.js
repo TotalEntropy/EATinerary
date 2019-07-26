@@ -11,11 +11,9 @@ var createMap = (data) => {
 
   // Separate the map data and catagories
   var map_data = data.map_data;
-  var map_categories = data.map_categories;
   var latitude_avg = data.latitude_avg;
   var longitude_avg = data.longitude_avg;
   console.log(map_data);
-  console.log(map_categories);
   console.log(latitude_avg);
   console.log(longitude_avg);
 

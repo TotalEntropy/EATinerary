@@ -70,11 +70,20 @@ def data(city='', clientTime='0', attributes=[]):
     clientTimeM = clientTime['h']*60 + clientTime['m']
     print(f'Time in minutes: {clientTimeM}')
 
-    # If the user checked the checkbox apply the filter to the initial query
-    for attribute in attributes:
-        if attribute['value'] == True:
-            column = attribute['name']
-            print(f'{column}: True')
+    # Select statement for all the desired columns
+    sel_category = [
+        category.Category_id,
+        category.Category
+    ]
+
+    # Construct the query
+    query_category = db.session.query(*sel_category)
+
+    # Convert the list of queries to a dictionary with the key as the
+    # category and the value as the category name this will be used
+    # later to convert the comma separated category ids to a list of
+    # categories
+    category_dict = {row[0] : row[1] for row in query_category.all()}
 
     # Select statement for all the desired columns
     sel_restaurant = [
@@ -127,6 +136,7 @@ def data(city='', clientTime='0', attributes=[]):
                 # the name key and only select restaurants that have a true
                 #  value in that column
                 column = attribute['name']
+                print(f'{column}: true')
                 query_restaurant = query_restaurant \
                     .filter(getattr(restaurant,column) == True)
 
@@ -136,30 +146,36 @@ def data(city='', clientTime='0', attributes=[]):
     longitudes = []
 
     for row in query_restaurant.all():
+
+        # Split the category ids on comma then replace each with
+        # corresponding category from the dictionary of categories
+        category_ids = row[21].split(',')
+        categories = [category_dict.get(int(value)) for value in category_ids]
+
         # Append each row in the result as a dictionary
         map_data.append({
-            'Name':row[0],
-            'Address':row[1],
-            # 'Postal_code':row[2],
-            # 'City':row[3],
-            'Latitude':row[4],
-            'Longitude':row[5],
-            'Stars':row[6],
-            # 'Monday_open':row[7],
-            # 'Monday_close':row[8],
-            # 'Tuesday_open':row[9],
-            # 'Tuesday_close':row[10],
-            # 'Wednesday_open':row[11],
-            # 'Wednesday_close':row[12],
-            # 'Thursday_open':row[13],
-            # 'Thursday_close':row[14],
-            # 'Friday_open':row[15],
-            # 'Friday_close':row[16],
-            # 'Saturday_open':row[17],
-            # 'Saturday_close':row[18],
-            # 'Sunday_open':row[19],
-            # 'Sunday_close':row[20],
-            'Category_ids':row[21]
+            'Name': row[0],
+            'Address': row[1],
+            # 'Postal_code': row[2],
+            # 'City': row[3],
+            'Latitude': row[4],
+            'Longitude': row[5],
+            'Stars': row[6],
+            # 'Monday_open': row[7],
+            # 'Monday_close': row[8],
+            # 'Tuesday_open': row[9],
+            # 'Tuesday_close': row[10],
+            # 'Wednesday_open': row[11],
+            # 'Wednesday_close': row[12],
+            # 'Thursday_open': row[13],
+            # 'Thursday_close': row[14],
+            # 'Friday_open': row[15],
+            # 'Friday_close': row[16],
+            # 'Saturday_open': row[17],
+            # 'Saturday_close': row[18],
+            # 'Sunday_open': row[19],
+            # 'Sunday_close': row[20],
+            'Categories': categories
         })
 
         latitudes.append(row[4])
@@ -171,23 +187,9 @@ def data(city='', clientTime='0', attributes=[]):
     print(f'Lat: {latitude_avg}')
     print(f'Long: {longitude_avg}')
 
-    # Select statement for all the desired columns
-    sel_category=[
-        category.Category_id,
-        category.Category
-    ]
-
-    # Construct the query
-    query_category=db.session.query(*sel_category)
-
-    # Convert the list of queries to a dictionary with the key as the category
-    #  and the value as the category name
-    map_categories = {row[0] : row[1] for row in query_category.all()}
-
     # Return two JSON separate objects
     return jsonify(
         map_data=map_data,
-        map_categories=map_categories,
         latitude_avg=latitude_avg,
         longitude_avg=longitude_avg
         ) 
