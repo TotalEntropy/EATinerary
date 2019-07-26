@@ -171,9 +171,6 @@ def data(city='', clientTime='0', attributes=[]):
     print(f'Lat: {latitude_avg}')
     print(f'Long: {longitude_avg}')
 
-    # Empty list to append results from the categories table to
-    map_categories=[]
-
     # Select statement for all the desired columns
     sel_category=[
         category.Category_id,
@@ -183,12 +180,8 @@ def data(city='', clientTime='0', attributes=[]):
     # Construct the query
     query_category=db.session.query(*sel_category)
 
-    for row in query_category.all():
-        # Append each row in the result as a dictionary        
-        map_categories.append({
-            'Category_id':row[0],
-            'Category':row[1]
-        })
+    # Convert the list of queries to a dictionary 
+    map_categories = {row[0] : row[1] for row in query_category.all()}
 
     # Return two JSON separate objects
     return jsonify(
