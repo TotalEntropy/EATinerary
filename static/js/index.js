@@ -44,13 +44,13 @@ submitBtn.on('click', () => {
     attributes = JSON.stringify(attributes);
 
     d3.json('/api/' + city + '/' + clientTime + '/'+attributes)
-    .then(function(data) {
+    .then(function(d) {
 
-      // Check if there were any results found
-      if (data.length > 0) {
+      // Check if there were any restaurants found
+      if (d.map_data.length > 0) {
 
         // Run the createMap function to create the map found in map.js
-        createMap(data);
+        createMap(d);
 
         // TODO add autoscroll
         
@@ -59,10 +59,10 @@ submitBtn.on('click', () => {
         // TODO add logic to pick next closest results
 
         // Let the user know no values were found
-        console.log('Sorry no results were found in that city with those'
+        console.log('Sorry no results were found in that city with those '
                     + 'restrictions :(');
 
-        window.alert('Sorry no results were found in that city with those'
+        window.alert('Sorry no results were found in that city with those '
                     + 'restrictions :(');
       }
     });

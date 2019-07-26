@@ -10,7 +10,6 @@ import simplejson as json
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{conn}/eatinerary'
 db=SQLAlchemy(app)
-
 Base=automap_base()
 Base.prepare(db.engine, reflect = True)
 
@@ -23,16 +22,17 @@ category=Base.classes.category
 def home():
     return render_template("index.html")
 
+####################################
 # API route to query restaurant data
-## todo allow d3.json to pass variables in the api route
+####################################
 @app.route("/api/<city>/<clientTime>/<attributes>", methods = ['GET'])
 def data(city='', clientTime='0', attributes=[]):
 
-    # Convert from JSON stringify
+    # Convert the variables passed from JSON stringify
     clientTime = json.loads(clientTime)
     attributes = json.loads(attributes)
 
-    # Print the values received in console
+    # Print the avariables received in console
     print(f'City: {city}')
 
     # Convert the day to a string and print the value
@@ -70,8 +70,7 @@ def data(city='', clientTime='0', attributes=[]):
     clientTimeM = clientTime.get('h')*60 + clientTime.get('m')
     print(f'Time in minutes: {clientTimeM}')
 
-    # If the user checked the checkbox
-    # apply the filter to the initial query
+    # If the user checked the checkbox apply the filter to the initial query
     for attribute in attributes:
         if attribute.get('value') == True:
             column = attribute.get('name')
@@ -104,32 +103,39 @@ def data(city='', clientTime='0', attributes=[]):
     ]
 
     # Construct the initial query
-    query = db.session.query(*sel_restaurant).filter(restaurant.City == city)
+    query_restaurant = db.session.query(*sel_restaurant) \
+        .filter(restaurant.City == city)
 
-    # If the user only wants restaurants that are currently open
 
     for attribute in attributes:
-        # If the user cares about the time only show restaurants that are
-        # currently open
         if attribute.get('name') == 'OpenNow':
+            # If the row represents the openNow checkbox
             if attribute.get('value') == True:
-                query=query.filter(getattr(restaurant, f'{day}_open')
-                                <= clientTimeM) \
-                           .filter(getattr(restaurant, f'{day}_close') \
-                                >= clientTimeM)
+                # If the user only wants restaurants that are currently open
+                #
+                # Check that the client time is within the closing and
+                # opening time that the restaurant has listed for today
+                # and add it to the query
+                query_restaurant = query_restaurant \
+                    .filter(getattr(restaurant, f'{day}_open') \
+                        <= clientTimeM) \
+                    .filter(getattr(restaurant, f'{day}_close') \
+                        >= clientTimeM)
         else:
-            # If the user checked the checkbox apply the filter
-            # to the initial query
             if attribute.get('value') == True:
+                # If the user checked the checkbox get the column name from
+                # the name key and only select restaurants that have a true
+                #  value in that column
                 column=attribute.get('name')
-                query=query.filter(getattr(restaurant,column) == True)
+                query_restaurant=query_restaurant \
+                    .filter(getattr(restaurant,column) == True)
 
     # Empty list to append results from the restaurant table to
-    map_latLong = []
+    map_data = []
 
-    for row in query.all():
+    for row in query_restaurant.all():
         # Append each row in the result as a dictionary
-        map_latLong.append({
+        map_data.append({
             'Name':row[0],
             'Address':row[1],
             # 'Postal_code':row[2],
@@ -154,28 +160,31 @@ def data(city='', clientTime='0', attributes=[]):
             'Category_ids':row[21]
         })
 
-    # # Empty list to append results from the categories table to
-    # results_category=[]
+    # Empty list to append results from the categories table to
+    map_categories=[]
 
-    # # Select statement for all the desired columns
-    # sel_category=[
-    #     category.Category_id,
-    #     category.Category
-    # ]
+    # Select statement for all the desired columns
+    sel_category=[
+        category.Category_id,
+        category.Category
+    ]
 
-    # # Construct the query
-    # query_category=db.session.query(*sel_category)
+    # Construct the query
+    query_category=db.session.query(*sel_category)
 
-    # # Loop through the results and append each row as a dictionary
-    # for row in query_category.all():
-    #     results_category.append({
-    #         'Category_id':row[0],
-    #         'Category':row[1]
-    #     })
+    for row in query_category.all():
+        # Append each row in the result as a dictionary        
+        map_categories.append({
+            'Category_id':row[0],
+            'Category':row[1]
+        })
 
-    return jsonify(map_latLong)
+    # Return two JSON separate objects
+    return jsonify(map_data=map_data, map_categories=map_categories) 
 
+#############################################
 # API route to return a json of unique cities
+#############################################
 @app.route("/api/cityList", methods=['GET'])
 def cityList():
 
@@ -192,12 +201,16 @@ def cityList():
     # Return the results as JSON
     return jsonify(results)
 
+############################################
 # Route to display information about the app
+############################################
 @app.route("/about")
 def about():
    return render_template("about.html")
 
+###########################
 # Contact information route
+###########################
 @app.route("/contact")
 def contact():
    return render_template("contact.html")
