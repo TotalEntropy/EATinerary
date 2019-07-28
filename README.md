@@ -1,5 +1,7 @@
 # Project Name: EATinerary
 ## Members: Brian Haley and Anna Francesca Gatus
+### Project [EATinerary project](https://github.com/users/TotalEntropy/projects/2)
+### Linked repos [EATinerary-ETL](https://github.com/TotalEntropy/Eatinerary-ETL.git)
 
 In this present generation, there exists a distinct hobbyist group called foodies. These are people who eat not only out of necessity but also for passion to savor a multitude of taste and flavors. They have a strong social media presence that shows off mouth-watering photos and videos of food and where they grab it. Aside from these foodies, a growing number of consumers dine at restaurants or order to go. We live in a fast-paced world and majority of people don’t have time nor inclination to cook. They barely have time to spare on researching eateries and menus. 
 
@@ -17,6 +19,6 @@ In order to help both consumers and businesses alike, we gathered Yelp’s datas
 7. simplejson==3.16.0
 
 ## Steps
-1. Ensure you have run the [ETL process](https://github.com/TotalEntropy/Eatinerary-ETL.git)/
+1. Ensure you have run the [ETL process](https://github.com/TotalEntropy/Eatinerary-ETL.git)
 2. Create a config.py in the [Eatinerary-ETL folder](https://github.com/TotalEntropy/Eatinerary-ETL) and include ```conn=user:pass@host```
 3. Run app.py
