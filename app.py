@@ -140,59 +140,74 @@ def data(city='', clientTime='0', attributes=[]):
                 query_restaurant = query_restaurant \
                     .filter(getattr(restaurant,column) == True)
 
+    print(f'# of responses: {len(query_restaurant.all())}')
+
     # Empty list to append results from the restaurant table to
     map_data = []
     latitudes = []
     longitudes = []
+    latitude_avg = 0
+    longitude_avg = 0
 
-    for row in query_restaurant.all():
+    if len(query_restaurant.all()) == 0:
+        # If there are no results return 204 no content error
+        return jsonify(
+            map_data=map_data,
+            latitude_avg=latitude_avg,
+            longitude_avg=longitude_avg
+            ) 
 
-        # Split the category ids on comma then replace each with
-        # corresponding category from the dictionary of categories
-        category_ids = row[21].split(',')
-        categories = [category_dict.get(int(value)) for value in category_ids]
+    else:
 
-        # Append each row in the result as a dictionary
-        map_data.append({
-            'Name': row[0],
-            'Address': row[1],
-            # 'Postal_code': row[2],
-            # 'City': row[3],
-            'Latitude': row[4],
-            'Longitude': row[5],
-            'Stars': row[6],
-            # 'Monday_open': row[7],
-            # 'Monday_close': row[8],
-            # 'Tuesday_open': row[9],
-            # 'Tuesday_close': row[10],
-            # 'Wednesday_open': row[11],
-            # 'Wednesday_close': row[12],
-            # 'Thursday_open': row[13],
-            # 'Thursday_close': row[14],
-            # 'Friday_open': row[15],
-            # 'Friday_close': row[16],
-            # 'Saturday_open': row[17],
-            # 'Saturday_close': row[18],
-            # 'Sunday_open': row[19],
-            # 'Sunday_close': row[20],
-            'Categories': categories
-        })
+        # Return the results found
+        for row in query_restaurant.all():
 
-        latitudes.append(row[4])
-        longitudes.append(row[5])
+            # Split the category ids on comma then replace each with
+            # corresponding category from the dictionary of categories
+            category_ids = row[21].split(',')
+            categories = [category_dict.get(int(value)) for value in category_ids]
 
-    # Calculating the center of the map for map.js
-    latitude_avg = (max(latitudes) + min(latitudes))/2
-    longitude_avg = (max(longitudes) + min(longitudes))/2
-    print(f'Lat: {latitude_avg}')
-    print(f'Long: {longitude_avg}')
+            # Append each row in the result as a dictionary
+            map_data.append({
+                'Name': row[0],
+                'Address': row[1],
+                # 'Postal_code': row[2],
+                # 'City': row[3],
+                'Latitude': row[4],
+                'Longitude': row[5],
+                'Stars': row[6],
+                # 'Monday_open': row[7],
+                # 'Monday_close': row[8],
+                # 'Tuesday_open': row[9],
+                # 'Tuesday_close': row[10],
+                # 'Wednesday_open': row[11],
+                # 'Wednesday_close': row[12],
+                # 'Thursday_open': row[13],
+                # 'Thursday_close': row[14],
+                # 'Friday_open': row[15],
+                # 'Friday_close': row[16],
+                # 'Saturday_open': row[17],
+                # 'Saturday_close': row[18],
+                # 'Sunday_open': row[19],
+                # 'Sunday_close': row[20],
+                'Categories': categories
+            })
 
-    # Return two JSON separate objects
-    return jsonify(
-        map_data=map_data,
-        latitude_avg=latitude_avg,
-        longitude_avg=longitude_avg
-        ) 
+            latitudes.append(row[4])
+            longitudes.append(row[5])
+
+        # Calculating the center of the map for map.js
+        latitude_avg = (max(latitudes) + min(latitudes))/2
+        longitude_avg = (max(longitudes) + min(longitudes))/2
+        print(f'Lat: {latitude_avg}')
+        print(f'Long: {longitude_avg}')
+
+        # Return two JSON separate objects
+        return jsonify(
+            map_data=map_data,
+            latitude_avg=latitude_avg,
+            longitude_avg=longitude_avg
+            ) 
 
 #############################################
 # API route to return a json of unique cities

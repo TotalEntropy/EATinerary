@@ -47,27 +47,26 @@ submitBtn.on('click', () => {
     .then(function(d) {
 
       // Check if there were any restaurants found
-      if (d.map_data.length > 0) {
-
-        // Run the createMap function to create the map found in map.js
-        createMap(d);
-
-        // TODO add autoscroll
-        
-      } else {
-
-        // TODO add logic to pick next closest results
-
+      if (d.map_data.length == 0) {
         // Let the user know no values were found
         console.log('Sorry no results were found in that city with those '
                     + 'restrictions :(');
 
         window.alert('Sorry no results were found in that city with those '
                     + 'restrictions :(');
+
+        // TODO add logic to pick next closest results
+
+      } else {
+        // Run the createMap function to create the map found in map.js
+        createMap(d);
+
+        // TODO add autoscroll
       }
     });
   } else {
-    // Let the user know no values were found
+    // Let the user know the city is not one in our database and no results
+    // can be found
     console.log('Sorry there are no results for that city');
     window.alert('Sorry there are no results for that city :(');
   }
