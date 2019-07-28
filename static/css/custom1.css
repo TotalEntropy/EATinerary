@@ -1,51 +1,9 @@
-/* The flip card container - width and height can be changed. */
-.flip-card {
-  background-color: transparent;
-  width: 300px;
-  height: 200px;
-  /* border: 1px solid #f1f1f1; */
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
-}
-
-/* This container is needed to position the front and back side */
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-/* Position the front and back side */
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-}
-
-/* Style the front side (fallback if image is missing) */
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
-}
-
-/* Style the back side */
-.flip-card-back {
-  background-color: #FFCC00;
-  color: black;
-  transform: rotateY(180deg);
-}
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
 
 /*========================================================
           Page loader Section
 ========================================================*/
+
 /* Center the loader */
 #loader {
   position: fixed;
@@ -63,11 +21,10 @@
   text-align: center;
 }
 
-
 /*========================================================
           Nav bar Section
 ========================================================*/
-/* SIDE NAVIGATION*/
+
 .side{
 	position: absolute;
 	top: 20%;
@@ -93,3 +50,151 @@
 	margin-left: 0;
 }
 
+/*========================================================
+          Background and Heading 
+========================================================*/
+
+/* body background*/
+ body{
+	background-image:linear-gradient(125deg, #ff4d00, #ffc100, #367588, #004242);
+	background-size:400% 400%;
+	animation: bganimation 15s infinite;
+	font-family: 'Roboto Slab';
+	font-size: 18px;
+ }
+
+ /* animation for background */ 
+@keyframes bganimation {
+    0%   {background-position: 0% 50%;}
+    50%  {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* Heading */ 
+h1 {
+    font-size: 60px;
+	color: #f0f0f0;
+	font-weight: 700;
+}
+
+/* Horizontal line */
+hr { 
+  height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+} 
+
+/*========================================================
+          Autocomplete Section
+========================================================*/
+
+/*The container must be positioned relative:*/
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+button[type=button] {
+  background-color: #004242;
+  color: #fff;
+  cursor: pointer;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: #004242 !important; 
+  color: #ffffff; 
+}
+
+/*========================================================
+          Checkbox Section
+========================================================*/
+
+.choice {
+  display: flex;
+ 
+  align-items: center;
+  cursor: pointer;
+}
+
+.choice input {
+  position: absolute;
+  visibility: hidden;
+}
+
+.choice i{
+	display: inline-block;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	border: 1px solid #ddd;
+	text-align: center;
+	line-height: 48px;
+	font-size: 20px;
+	margin-right: 14px;
+	color: transparent;
+}
+
+.text {
+  font-size: 18px;
+  color: black;
+}
+
+.choice input:checked ~i{
+  color: #e74c3c;
+}
+
+.choice input:checked ~ .text{
+  color: #e74c3c;
+}
+
+/*========================================================
+          Map Section
+========================================================*/
+
+#map {
+		height: 750px;
+	}
+	.controls {  
+		position: absolute;
+		top: 10px;
+		left: 50px;
+		z-index: 400;
+		padding: 10px;
+	}
