@@ -191,10 +191,3 @@ button[type=button] {
 #map {
 		height: 750px;
 	}
-	.controls {  
-		position: absolute;
-		top: 10px;
-		left: 50px;
-		z-index: 400;
-		padding: 10px;
-	}
