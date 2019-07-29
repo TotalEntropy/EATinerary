@@ -1,5 +1,5 @@
 // Icons for the map
-const cutlery = L.icon({
+var cutlery = L.icon({
   iconUrl: 'static/Images/cutlery.svg',
   iconSize: [45, 95],
   iconAnchor: [22, 94],
@@ -33,9 +33,10 @@ var createMap = (data) => {
     // Construct the marker data
     var marker = [
              row.Latitude,
-             row.Longitude,
-             {icon: cutlery}
-             ];
+             row.Longitude
+    ];
+
+    var icon = {icon: cutlery};
 
     // Construct the popup data
     var popup = '<b>Name: </b>' + row.Name + '<br>'
@@ -54,7 +55,7 @@ var createMap = (data) => {
     }
 
     // Bind the marker and popup data
-    markers.push(L.marker(marker).bindPopup(popup));
+    markers.push(L.marker(marker, icon).bindPopup(popup));
   });
 
   // Create layer group of the markers
