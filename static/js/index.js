@@ -82,9 +82,3 @@ submitBtn.on('click', () => {
     window.alert('Sorry there are no results for that city :(');
   }
 });
-
-// // Smooth scroll to the map when submit button is clicked
-// submitBtn.on('click', () => {
-
-
-// });
