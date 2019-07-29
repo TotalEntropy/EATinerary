@@ -79,5 +79,6 @@ var createMap = (data) => {
   });
 
   // Create control layer for our map
-  L.control.layers(baseMaps, overlayMaps).addTo(myMap);
+  lcontrol = L.control.layers(baseMaps, overlayMaps);
+  lcontrol.addTo(myMap)
 };
