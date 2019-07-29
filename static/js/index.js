@@ -58,8 +58,15 @@ submitBtn.on('click', () => {
         // TODO add logic to pick next closest results
 
       } else {
-        // Run the createMap function to create the map found in map.js
-        createMap(d);
+
+        // If the map hasn't been created yet
+        if (typeof lcontrol == 'undefined') {
+          // Run the createMap function to create the map found in map.js
+          createMap(d);
+        } else {
+          // Remove the old layers and add the new data
+          recreateMap(d);
+        }
 
         // TODO add autoscroll
       }
