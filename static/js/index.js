@@ -82,3 +82,8 @@ submitBtn.on('click', () => {
     window.alert('Sorry there are no results for that city :(');
   }
 });
+
+$(window).on("resize", function() {
+  $("#map").height($(window).height()).width($(window).width());
+  map.invalidateSize();
+}).trigger("resize");
