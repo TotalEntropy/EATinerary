@@ -116,8 +116,9 @@ var recreateMap = (data) => {
     var marker = [
               row.Latitude,
               row.Longitude,
-              {icon: cutlery}
-              ];
+    ];
+    
+    var icon = {icon: cutlery};
 
     // Construct the popup data
     var popup = '<b>Name: </b>' + row.Name + '<br>'
@@ -136,7 +137,7 @@ var recreateMap = (data) => {
     }
 
     // Bind the marker and popup data
-    markers.push(L.marker(marker).bindPopup(popup));
+    markers.push(L.marker(marker, icon).bindPopup(popup));
   });
 
   // Create layer group of the markers, add it to the overlay and map them
