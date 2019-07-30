@@ -27,17 +27,27 @@
 	<div id="loader"></div>
 	<div style="display:none;" id="myDiv" class="animate-bottom">
 	
-		<!-- Side Nav Bar -->
+		<ul class="nav">
+			<li class="nav-item">
+			  <a class="nav-link active" style="color: black" href="/">Home</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" style="color: black" href="/about">About</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" style="color: black" href="/contact">Contact</a>
+			</li>
+		</ul>
+		<!-- Side Nav Bar
 		<div class="side">
 			<a style="background: #ff4d00;" href="/">Home</a>
 			<a style="background:#ffc100;" href="/about" target="_blank">About</a>
-			<!-- <a style="background:#367588;" href="#map">Map</a> -->
 			<a style="background:#004242;" href="/contact" target="_blank">Contact</a>
-		</div>
+		</div> -->
 		
 		<!-- Heading -->
 		<div class="container"><br>
-			<h1><img src="/static/Images/image.png" style="width:112px;height:92px;">EATinerary</h1>
+			<h2><img src="/static/Images/image.png" style="width:112px;height:92px;">EATinerary</h2>
 			<h6 style="color: black">Every culinary experience has a story and we would like to help you tell yours.</h6>		
 			<hr><br>
 		</div>		
@@ -46,14 +56,14 @@
 	<div class="container">
 		<div class="row">
 			<!-- City Card -->  
-			<div class="col-md-5">
-				<div class="card-deck mb-3 text-left">
-					<div class="card mb-4 shadow-sm">
+			<div class="col-md-4 mb-5">
+				<div class="card-deck mb-5 text-left">
+					<div class="card mb-5 shadow-sm">
 						<div class="card-header"><h5>Where do you want to go?</h5></div>
 						<div class="card-body">
 							<!--Make sure the form has the autocomplete function switched off:-->
 							<form autocomplete="off">
-								<div class="autocomplete" style="width:300px;">
+								<div class="autocomplete">
 									<input id="myInput" type="text" name="myCity" placeholder="City">
 								</div>
 								<button id="submitButton" type="button">Submit</button>
@@ -64,9 +74,9 @@
 			</div>
 		
 			<!-- Accessibility card -->
-			<div class="col-md-4">
-				<div class="card-deck mb-3 text-left">
-					<div class="card mb-4 shadow-sm">
+			<div class="col-md-8">
+				<div class="card-deck mb-2 text-left">
+					<div class="card mb-2 shadow-sm">
 						<div class="card-header"><h5>Accessibility requirements?</h5></div>
 						<div class="card-body">
 							<label class="choice">
@@ -96,13 +106,8 @@
 							</label>
 						</div>
 					</div>
-				</div>
-			</div>
-
-			<!-- Dietary card -->
-			<div class="col-md-3">
-				<div class="card-deck mb-3 text-left">
-					<div class="card mb-4 shadow-sm">
+					<!-- Dietary card -->
+					<div class="card mb-2 shadow-sm">
 						<div class="card-header"><h5>Dietary requirements?</h5></div>
 						<div class="card-body">
 							<label class="choice">
@@ -144,8 +149,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
 
 	<!-- The div for our map -->
 	<div class="container-fluid">
