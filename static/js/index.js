@@ -84,6 +84,6 @@ submitBtn.on('click', () => {
 });
 
 $(window).on("resize", function() {
-  $("#map").height($(window).height()).width($(window).width());
+  $("#map").height($(window).height()-59).width($(window).width());
   map.invalidateSize();
 }).trigger("resize");
