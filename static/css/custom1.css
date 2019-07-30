@@ -184,6 +184,7 @@ button[type=button] {
   color: #e74c3c;
 }
 
+ /* Current workaround for getting map to display */
 .map {
   height: 750px;
 }
