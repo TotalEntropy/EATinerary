@@ -7,10 +7,6 @@ submitBtn.on('click', () => {
   // Prevent refresh
   d3.event.preventDefault();
 
-  $('html, body').animate( {
-    scrollTop: $('div.map').offset().top,
-  }, 500, 'linear')
-
   // Store the value placed in city
   var city = cityField.property('value').trim();
   console.log(city);
@@ -62,6 +58,10 @@ submitBtn.on('click', () => {
         // TODO add logic to pick next closest results
 
       } else {
+
+        $('html, body').animate( {
+          scrollTop: $('div.map').offset().top,
+        }, 500, 'linear')
 
         // If the map hasn't been created yet
         if (typeof lcontrol == 'undefined') {
