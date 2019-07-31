@@ -24,38 +24,35 @@
 
 <body onload="myFunction()" style="margin:0;">
 	<div id="loader"></div>
-	<nav class="navbar navbar-expand sticky-top navbar-darl bg-dark">
-		<a class="navbar-brand" href="#">EATinerary</a>
+	<nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-dark">
+		<a class="navbar-brand" href="/">EATinerary</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		  <span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 		  <ul class="navbar-nav">
 			<li class="nav-item active">
-			  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				<a class="nav-link" href="#header">Search</a>
 			</li>
 			<li class="nav-item">
-			  <a class="nav-link" href="#">Features</a>
+				<a class="nav-link" href="/about">About</a>
 			</li>
 			<li class="nav-item">
-			  <a class="nav-link" href="#">Pricing</a>
-			</li>
-			<li class="nav-item">
-			  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+			  <a class="nav-link" href="/contact">Contact</a>
 			</li>
 		  </ul>
 		</div>
 	  </nav>
 		
 		<!-- Heading -->
-		<div class="container"><br>
+		<div id="header" class="container"><br>
 			<h2><img src="/static/Images/image.png" style="width:112px;height:92px;">EATinerary</h2>
 			<h6 style="color: black">Every culinary experience has a story and we would like to help you tell yours.</h6>		
 			<hr><br>
 		</div>		
     </div>
 
-	<div class="container">
+	<div id="search" class="container">
 		<div class="row">
 			<!-- City Card -->  
 			<div class="col-md-4 mb-5">
@@ -155,8 +152,7 @@
 	</div>
 
 	<!-- The div for our map -->
-	<div class="container-fluid"></div>
-		<div id="map" class="map"></div>
+	<div id="map" class="map"></div>
 
 	<!-- Bootstrap core JavaScript
 	================================================== -->
