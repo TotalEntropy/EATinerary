@@ -69,10 +69,34 @@ var createMap = (data) => {
     accessToken: mapboxApiKey
   });
 
-  // Only one base layer can be shown at a time
-  baseMaps = {
-    Day: day
-  };
+	var dark = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+	  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+	  maxZoom: 18,
+	  id: "mapbox.dark",
+	  accessToken: mapboxApiKey
+	});
+
+	var satellite = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+	  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+	  maxZoom: 18,
+	  id: "mapbox.satellite",
+	  accessToken: mapboxApiKey
+	});
+
+	var pirates = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+	  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+	  maxZoom: 18,
+	  id: "mapbox.pirates",
+	  accessToken: mapboxApiKey
+	});
+
+	  // Only one base layer can be shown at a time
+	  baseMaps = {
+	  Day: day,
+	  Night: dark,
+	  Satellite: satellite,
+	  Fun: pirates
+	  };
 
   // Overlay maps that can be toggled on or off
   overlayMaps = {
