@@ -3,12 +3,13 @@ from flask import Flask, redirect, render_template, request, jsonify
 from config import conn
 from flask_sqlalchemy import SQLAlchemy
 import pymysql
+pymysql.install_as_MySQLdb()
 from sqlalchemy.ext.automap import automap_base
 import simplejson as json
 
 # Set up flask and db
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{conn}/eatinerary'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{conn}/eatinerary'
 db=SQLAlchemy(app)
 Base=automap_base()
 Base.prepare(db.engine, reflect = True)
