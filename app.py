@@ -8,7 +8,7 @@ import os
 
 # Set up flask and db
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ('CLEARDB_DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('CLEARDB_DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 Base = automap_base()
