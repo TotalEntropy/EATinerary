@@ -20,9 +20,6 @@ var createMap = (data) => {
   var map_data = data.map_data;
   var latitude_avg = data.latitude_avg;
   var longitude_avg = data.longitude_avg;
-  console.log(map_data);
-  console.log(latitude_avg);
-  console.log(longitude_avg);
 
   // Create empty array to later store the markers 
   var markers = [];
@@ -61,34 +58,35 @@ var createMap = (data) => {
   // Create layer group of the markers
   restaurants = L.layerGroup(markers);
 
-  // Create tile layers
-  day = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-    attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-    maxZoom: 18,
-    id: "mapbox.streets",
-    accessToken: mapboxApiKey
-  });
+  d3.json('/key').then(function(mapboxApiKey) {
+    // Create tile layers
+    day = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+      attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+      maxZoom: 18,
+      id: "mapbox.streets",
+      accessToken: mapboxApiKey
+    });
 
-	var dark = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-	  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-	  maxZoom: 18,
-	  id: "mapbox.dark",
-	  accessToken: mapboxApiKey
-	});
+    var dark = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+      attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+      maxZoom: 18,
+      id: "mapbox.dark",
+      accessToken: mapboxApiKey
+    });
 
-	var satellite = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-	  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-	  maxZoom: 18,
-	  id: "mapbox.satellite",
-	  accessToken: mapboxApiKey
-	});
+    var satellite = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+      attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+      maxZoom: 18,
+      id: "mapbox.satellite",
+      accessToken: mapboxApiKey
+    });
 
-	var pirates = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-	  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-	  maxZoom: 18,
-	  id: "mapbox.pirates",
-	  accessToken: mapboxApiKey
-	});
+    var pirates = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+      attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+      maxZoom: 18,
+      id: "mapbox.pirates",
+      accessToken: mapboxApiKey
+    });
 
 	  // Only one base layer can be shown at a time
 	  baseMaps = {
@@ -98,21 +96,22 @@ var createMap = (data) => {
 	  Fun: pirates
 	  };
 
-  // Overlay maps that can be toggled on or off
-  overlayMaps = {
-    All: restaurants
-  };
+    // Overlay maps that can be toggled on or off
+    overlayMaps = {
+      All: restaurants
+    };
 
-  // Create map object and set defaults
-  myMap = L.map('map', {
-    center: [latitude_avg, longitude_avg],
-    zoom: 12,
-    layers: [day, restaurants]
+    // Create map object and set defaults
+    myMap = L.map('map', {
+      center: [latitude_avg, longitude_avg],
+      zoom: 12,
+      layers: [day, restaurants]
+    });
+
+    // Create control layer for our map
+    lcontrol = L.control.layers(baseMaps, overlayMaps);
+    lcontrol.addTo(myMap)
   });
-
-  // Create control layer for our map
-  lcontrol = L.control.layers(baseMaps, overlayMaps);
-  lcontrol.addTo(myMap)
 };
 
 // Function to recreate the layers
@@ -126,9 +125,6 @@ var recreateMap = (data) => {
   var map_data = data.map_data;
   var latitude_avg = data.latitude_avg;
   var longitude_avg = data.longitude_avg;
-  console.log(map_data);
-  console.log(latitude_avg);
-  console.log(longitude_avg);
 
   // Create empty array to later store the markers 
   var markers = [];

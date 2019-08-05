@@ -8,10 +8,11 @@ submitBtn.on('click', () => {
   d3.event.preventDefault();
 
   // Store the value placed in city
-  var city = cityField.property('value').trim();
-  console.log(city);
+  var city = cityField.property('value').toLowerCase().trim();
 
-  if (unique_cities.includes(city)) {
+  unique_cities_lower = unique_cities.map(function(x){return x.toLowerCase()});
+
+  if (unique_cities_lower.includes(city)) {
 
     // Store the user's current time and pass it to the server
     var date = new Date();
@@ -20,7 +21,6 @@ submitBtn.on('click', () => {
       h:date.getHours(),
       m:date.getMinutes()
     };
-    console.log(clientTime);
 
     // Empty array to store the attributes values in
     var attributes = [];
@@ -37,8 +37,6 @@ submitBtn.on('click', () => {
       attributes.push({name:text, value:cb});
     });
 
-    console.log(attributes);
-
     // Convert the objects for the server
     clientTime = JSON.stringify(clientTime);
     attributes = JSON.stringify(attributes);
@@ -49,9 +47,6 @@ submitBtn.on('click', () => {
       // Check if there were any restaurants found
       if (d.map_data.length == 0) {
         // Let the user know no values were found
-        console.log('Sorry no results were found in that city with those '
-                    + 'restrictions :(');
-
         window.alert('Sorry no results were found in that city with those '
                     + 'restrictions :(');
 
@@ -71,19 +66,15 @@ submitBtn.on('click', () => {
           // Remove the old layers and add the new data
           recreateMap(d);
         }
-
-        // TODO add autoscroll
       }
     });
   } else {
     // Let the user know the city is not one in our database and no results
     // can be found
-    console.log('Sorry there are no results for that city');
     window.alert('Sorry there are no results for that city :(');
   }
 });
 
 $(window).on("resize", function() {
   $("#map").height($(window).height()-59).width($(window).width());
-  map.invalidateSize();
 }).trigger("resize");
