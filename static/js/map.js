@@ -20,9 +20,6 @@ var createMap = (data) => {
   var map_data = data.map_data;
   var latitude_avg = data.latitude_avg;
   var longitude_avg = data.longitude_avg;
-  console.log(map_data);
-  console.log(latitude_avg);
-  console.log(longitude_avg);
 
   // Create empty array to later store the markers 
   var markers = [];
@@ -128,9 +125,6 @@ var recreateMap = (data) => {
   var map_data = data.map_data;
   var latitude_avg = data.latitude_avg;
   var longitude_avg = data.longitude_avg;
-  console.log(map_data);
-  console.log(latitude_avg);
-  console.log(longitude_avg);
 
   // Create empty array to later store the markers 
   var markers = [];
