@@ -2,7 +2,6 @@ var unique_cities = []
 
 d3.json('/api/cityList').then(function(d) {
   unique_cities = d;
-  console.log(unique_cities);
 
   function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,

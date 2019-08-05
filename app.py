@@ -145,8 +145,8 @@ def data(city='', clientTime='0', attributes=[]):
                 'Categories': categories
             })
 
-            latitudes.append(row[4])
-            longitudes.append(row[5])
+            latitudes.append(row[2])
+            longitudes.append(row[3])
 
         # Calculating the center of the map for map.js
         latitude_avg = (max(latitudes) + min(latitudes))/2
