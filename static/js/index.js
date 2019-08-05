@@ -8,10 +8,14 @@ submitBtn.on('click', () => {
   d3.event.preventDefault();
 
   // Store the value placed in city
-  var city = cityField.property('value').trim();
+  var city = cityField.property('value').toLowerCase().trim();
   console.log(city);
 
-  if (unique_cities.includes(city)) {
+  unique_cities_lower = unique_cities.map(function(x){return x.toLowerCase()});
+
+  console.log(unique_cities_lower);
+
+  if (unique_cities_lower.includes(city)) {
 
     // Store the user's current time and pass it to the server
     var date = new Date();
@@ -85,5 +89,4 @@ submitBtn.on('click', () => {
 
 $(window).on("resize", function() {
   $("#map").height($(window).height()-59).width($(window).width());
-  map.invalidateSize();
 }).trigger("resize");
