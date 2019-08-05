@@ -33,43 +33,30 @@ def data(city='', clientTime='0', attributes=[]):
     clientTime = json.loads(clientTime)
     attributes = json.loads(attributes)
 
-    # Print the avariables received in console
-    print(f'City: {city}')
-
     # Convert the day to a string and print the value
     if clientTime['day'] == 0:
         day = 'Sunday'
-        print(f"Day: {day}")
 
     elif clientTime['day'] == 1:
         day = 'Monday'
-        print(f"Day: {day}")
 
     elif clientTime['day'] == 2:
         day = 'Tuesday'
-        print(f"Day: {day}")
 
     elif clientTime['day'] == 3:
         day = 'Wednesday'
-        print(f"Day: {day}")
         
     elif clientTime['day'] == 4:
         day = 'Thursday'
-        print(f"Day: {day}")
 
     elif clientTime['day'] == 5:
         day = 'Friday'
-        print(f"Day: {day}")
         
     elif clientTime['day'] == 6:
-        day = 'Saturday'
-        print(f"Day: {day}")
-
-    print(f"Time: {clientTime['h']}:{clientTime['m']}")
+        day = 'Saturday'    
 
     # Convert clientTime to minutes
     clientTimeM = clientTime['h']*60 + clientTime['m']
-    print(f'Time in minutes: {clientTimeM}')
 
     # Select statement for all the desired columns
     sel_category = [
@@ -90,32 +77,15 @@ def data(city='', clientTime='0', attributes=[]):
     sel_restaurant = [
         restaurant.Name,
         restaurant.Address,
-        restaurant.Postal_code,
-        restaurant.City,
         restaurant.Latitude,
         restaurant.Longitude,
         restaurant.Stars,
-        restaurant.Monday_open,
-        restaurant.Monday_close,
-        restaurant.Tuesday_open,
-        restaurant.Tuesday_close,
-        restaurant.Wednesday_open,
-        restaurant.Wednesday_close,
-        restaurant.Thursday_open,
-        restaurant.Thursday_close,
-        restaurant.Friday_open,
-        restaurant.Friday_close,
-        restaurant.Saturday_open,
-        restaurant.Saturday_close,
-        restaurant.Sunday_open,
-        restaurant.Sunday_close,
         restaurant.Category_ids
     ]
 
     # Construct the initial query
     query_restaurant = db.session.query(*sel_restaurant) \
         .filter(restaurant.City == city)
-
 
     for attribute in attributes:
         if attribute['name'] == 'OpenNow':
@@ -137,11 +107,9 @@ def data(city='', clientTime='0', attributes=[]):
                 # the name key and only select restaurants that have a true
                 #  value in that column
                 column = attribute['name']
-                print(f'{column}: true')
+                
                 query_restaurant = query_restaurant \
                     .filter(getattr(restaurant,column) == True)
-
-    print(f'# of responses: {len(query_restaurant.all())}')
 
     # Empty list to append results from the restaurant table to
     map_data = []
@@ -157,7 +125,6 @@ def data(city='', clientTime='0', attributes=[]):
             latitude_avg=latitude_avg,
             longitude_avg=longitude_avg
             ) 
-
     else:
 
         # Return the results found
@@ -165,32 +132,16 @@ def data(city='', clientTime='0', attributes=[]):
 
             # Split the category ids on comma then replace each with
             # corresponding category from the dictionary of categories
-            category_ids = row[21].split(',')
+            category_ids = row[5].split(',')
             categories = [category_dict.get(int(value)) for value in category_ids]
 
             # Append each row in the result as a dictionary
             map_data.append({
                 'Name': row[0],
                 'Address': row[1],
-                # 'Postal_code': row[2],
-                # 'City': row[3],
-                'Latitude': row[4],
-                'Longitude': row[5],
-                'Stars': row[6],
-                # 'Monday_open': row[7],
-                # 'Monday_close': row[8],
-                # 'Tuesday_open': row[9],
-                # 'Tuesday_close': row[10],
-                # 'Wednesday_open': row[11],
-                # 'Wednesday_close': row[12],
-                # 'Thursday_open': row[13],
-                # 'Thursday_close': row[14],
-                # 'Friday_open': row[15],
-                # 'Friday_close': row[16],
-                # 'Saturday_open': row[17],
-                # 'Saturday_close': row[18],
-                # 'Sunday_open': row[19],
-                # 'Sunday_close': row[20],
+                'Latitude': row[2],
+                'Longitude': row[3],
+                'Stars': row[4],
                 'Categories': categories
             })
 
@@ -200,8 +151,6 @@ def data(city='', clientTime='0', attributes=[]):
         # Calculating the center of the map for map.js
         latitude_avg = (max(latitudes) + min(latitudes))/2
         longitude_avg = (max(longitudes) + min(longitudes))/2
-        print(f'Lat: {latitude_avg}')
-        print(f'Long: {longitude_avg}')
 
         # Return two JSON separate objects
         return jsonify(
