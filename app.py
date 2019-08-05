@@ -8,7 +8,8 @@ import os
 
 # Set up flask and db
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('CLEARDB_DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ('CLEARDB_DATABASE_URL')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 Base = automap_base()
 Base.prepare(db.engine, reflect = True)
@@ -243,4 +244,4 @@ def contact():
    return render_template("contact.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
