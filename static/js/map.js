@@ -90,7 +90,6 @@ var createMap = (data) => {
       id: "mapbox.pirates",
       accessToken: mapboxApiKey
     });
-  });
 
 	  // Only one base layer can be shown at a time
 	  baseMaps = {
@@ -100,21 +99,22 @@ var createMap = (data) => {
 	  Fun: pirates
 	  };
 
-  // Overlay maps that can be toggled on or off
-  overlayMaps = {
-    All: restaurants
-  };
+    // Overlay maps that can be toggled on or off
+    overlayMaps = {
+      All: restaurants
+    };
 
-  // Create map object and set defaults
-  myMap = L.map('map', {
-    center: [latitude_avg, longitude_avg],
-    zoom: 12,
-    layers: [day, restaurants]
+    // Create map object and set defaults
+    myMap = L.map('map', {
+      center: [latitude_avg, longitude_avg],
+      zoom: 12,
+      layers: [day, restaurants]
+    });
+
+    // Create control layer for our map
+    lcontrol = L.control.layers(baseMaps, overlayMaps);
+    lcontrol.addTo(myMap)
   });
-
-  // Create control layer for our map
-  lcontrol = L.control.layers(baseMaps, overlayMaps);
-  lcontrol.addTo(myMap)
 };
 
 // Function to recreate the layers
