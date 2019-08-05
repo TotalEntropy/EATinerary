@@ -111,5 +111,5 @@ config.js
 *.code-workspace
 settings.json
 app_old_heroku.py
-static/js/map._old_heroku.js
-static/js/map_old_heroku.js
+map_old_heroku.js
+business.json
