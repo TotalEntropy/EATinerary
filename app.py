@@ -10,6 +10,7 @@ import os
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('CLEARDB_DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_POOL_RECYCLE'] = 59
 db = SQLAlchemy(app)
 Base = automap_base()
 Base.prepare(db.engine, reflect = True)
