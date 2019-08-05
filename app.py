@@ -243,5 +243,12 @@ def about():
 def contact():
    return render_template("contact.html")
 
+###########################
+# API key route
+###########################
+@app.route("/key", methods=['GET'])
+def key():
+    return jsonify(os.environ.get('mapboxApiKey'))
+
 if __name__ == "__main__":
     app.run(debug=False)
