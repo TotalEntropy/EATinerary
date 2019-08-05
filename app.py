@@ -1,22 +1,21 @@
 from flask import Flask, redirect, render_template, request, jsonify
-# import pandas as pd
-from config import conn
 from flask_sqlalchemy import SQLAlchemy
 import pymysql
 pymysql.install_as_MySQLdb()
 from sqlalchemy.ext.automap import automap_base
 import simplejson as json
+import os
 
 # Set up flask and db
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{conn}/eatinerary'
-db=SQLAlchemy(app)
-Base=automap_base()
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('CLEARDB_DATABASE_URL')
+db = SQLAlchemy(app)
+Base = automap_base()
 Base.prepare(db.engine, reflect = True)
 
 # Prepping both tables
-restaurant=Base.classes.restaurant
-category=Base.classes.category
+restaurant = Base.classes.restaurant
+category = Base.classes.category
 
 # Home route
 @app.route("/")
