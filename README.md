@@ -3,6 +3,8 @@
 ### [EATinerary project](https://github.com/users/TotalEntropy/projects/2)
 ### Linked repos: [EATinerary-ETL](https://github.com/TotalEntropy/Eatinerary-ETL.git)
 
+[Heroku deployment](https://eatinerary2.herokuapp.com/)
+
 In this present generation, there exists a distinct hobbyist group called foodies. These are people who eat not only out of necessity but also for passion to savor a multitude of taste and flavors. Aside from these foodies, a growing number of consumers dine at restaurants or order to go. We live in a fast-paced world and majority of people don’t have time nor inclination to cook.
 
 Research takes a lot of time. However, it is unavoidable because foodies can be extremely picky on where to eat. Some parents require a kid friendly restaurant. Dog lovers need a place to dine comfortably with their pets. Based on personal experience, eating with a group is tricky - One friend needs wheelchair access, another companion needs a gluten-free meal, while some are only available late at night. We find ourselves searching multiple websites to plan a food trip. In order to solve this problem, we gathered Yelp’s dataset and built an interactive restaurant web application called EATinerary.
